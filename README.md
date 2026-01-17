@@ -13,7 +13,7 @@ A cél megvédeni a bázist a hullámokban támadó ellenségektől, miközben d
 
 ## 👥 Készítők
 
-A projektet a következő hallgatók készítették:
+A projektet a következő tanulók készítették:
 
 - **Bangó Máté**
 - **Bacskai Bence**
