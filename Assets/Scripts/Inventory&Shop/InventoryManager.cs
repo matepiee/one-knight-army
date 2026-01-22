@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -44,6 +46,14 @@ public class InventoryManager : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+
+    public void UseItem(InventorySlot slot)
+    {
+        if(slot.itemSO != null && slot.quantity >= 0)
+        {
+            Debug.Log("Trying to use item: " + slot.itemSO.itemName);
         }
     }
 }
