@@ -6,8 +6,15 @@ public class Enemy_Movement : MonoBehaviour
     private Transform player;
     private int facingDirection = 1;
     private Animator anim;
-    public float speed = 5f;
     private EnemyState enemyState;
+    private float attackCooldownTimer;
+
+    public float playerDetectRange = 5;
+    public float speed = 5f;
+    public float attackRange = 1;
+    public float attackCooldown = 2;
+    public Transform detectionPoint;
+    public LayerMask playerLayer;
 
     void Start()
     {
@@ -18,41 +25,62 @@ public class Enemy_Movement : MonoBehaviour
 
     void Update()
     {
-        if (enemyState == EnemyState.Chasing)
+        if (enemyState != EnemyState.Knockback)
         {
-            if (player.position.x > transform.position.x && facingDirection == -1 || player.position.x < transform.position.x && facingDirection == 1)
+
+            CheckForPlayer();
+            if (attackCooldownTimer > 0)
+            {
+                attackCooldownTimer -= Time.deltaTime;
+            }
+            if (enemyState == EnemyState.Chasing)
+            {
+                Chase();
+            }
+            else if (enemyState == EnemyState.Attacking)
+            {
+                rb.linearVelocity = Vector2.zero;
+            }
+        }
+    }
+
+    void Chase()
+    {
+
+        if (player.position.x > transform.position.x && facingDirection == -1 || player.position.x < transform.position.x && facingDirection == 1)
             {
                 Flip();
             }
             Vector2 direction = (player.position - transform.position).normalized;
             rb.linearVelocity = direction * speed;
-        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void CheckForPlayer()
     {
-        if (collision.gameObject.tag == "Player")
+        Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectRange, playerLayer);
+
+        if (hits.Length>0)
         {
-            if (player == null)
+            player=hits[0].transform;
+
+            if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCooldownTimer <= 0)
             {
-                player = collision.transform;
+                attackCooldownTimer = 2;
+                ChangeState(EnemyState.Attacking);
             }
-            ;
+            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
+            {
+                ChangeState(EnemyState.Chasing);
+            }
 
-
-            ChangeState(EnemyState.Chasing);
         }
-
-
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        else
         {
             rb.linearVelocity = Vector2.zero;
-
             ChangeState(EnemyState.Idle);
         }
+
+
     }
     void Flip()
     {
@@ -60,7 +88,7 @@ public class Enemy_Movement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
-    void ChangeState(EnemyState newState)
+    public void ChangeState(EnemyState newState)
     {
         if (enemyState == EnemyState.Idle)
         {
@@ -69,6 +97,10 @@ public class Enemy_Movement : MonoBehaviour
         else if (enemyState == EnemyState.Chasing)
         {
             anim.SetBool("IsChasing", false);
+        }
+        else if (enemyState == EnemyState.Attacking)
+        {
+            anim.SetBool("IsAttacking", false);
         }
 
         enemyState = newState;
@@ -81,11 +113,24 @@ public class Enemy_Movement : MonoBehaviour
         {
             anim.SetBool("IsChasing", true);
         }
+        else if (enemyState == EnemyState.Attacking)
+        {
+            anim.SetBool("IsAttacking", true);
+        }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(detectionPoint.position, playerDetectRange);
+    }
+
 }
 
 public enum EnemyState
 {
     Idle,
     Chasing,
+    Attacking,
+    Knockback,
 }
