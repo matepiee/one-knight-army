@@ -10,7 +10,7 @@ public class MainMenuParallax : MonoBehaviour
     void Start()
     {
         // Elmentjük a kép eredeti helyét
-        startPos = transform.position;
+        startPos = transform.localPosition;
     }
 
     void Update()
@@ -19,6 +19,6 @@ public class MainMenuParallax : MonoBehaviour
         Vector2 pOffset = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
 
         // Elmozgatjuk a réteget a módosító értékkel
-        transform.position = new Vector2(startPos.x + pOffset.x * moveModifier, startPos.y + pOffset.y * moveModifier);
+        transform.localPosition = new Vector2(startPos.x + pOffset.x * moveModifier, startPos.y + pOffset.y * moveModifier);
     }
 }
