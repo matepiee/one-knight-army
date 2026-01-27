@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class Enemy_Health : MonoBehaviour
 {
+    public int expReward = 30;
+
+    public delegate void MonsterDefeated(int exp);
+    public static event MonsterDefeated OnMonsterDefeated;
+
     public int currentHp;
     public int maxHp;
 
@@ -19,7 +24,9 @@ public class Enemy_Health : MonoBehaviour
         }
         else if (currentHp <=0)
         {
+            OnMonsterDefeated(expReward);
             Destroy(gameObject);
+
         }
     }
 }
