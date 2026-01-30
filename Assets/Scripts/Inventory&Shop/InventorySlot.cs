@@ -36,7 +36,6 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     }
 
 
-    
     public void OnPointerClick(PointerEventData eventData)
     {
         if (quantity > 0)
