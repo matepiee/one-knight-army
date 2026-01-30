@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 
 public class ShopManager : MonoBehaviour
 {
@@ -71,12 +72,14 @@ public class ShopManager : MonoBehaviour
 
         foreach (var slot in shopSlots)
         {
-            if(slot.itemSO == itemSO)
-            {
-                inventoryManager.gold += slot.price; // slot.price - {amount} // If you want the item to be sold at a lower price
-                inventoryManager.goldText.text = inventoryManager.gold.ToString();
-                return;
-            }
+                if (slot.itemSO == itemSO)
+                {
+
+                    inventoryManager.gold += slot.price; // slot.price - {amount} // If you want the item to be sold at a lower price
+                    inventoryManager.goldText.text = inventoryManager.gold.ToString();
+                    return;
+                }
+            
             
         }
     }
