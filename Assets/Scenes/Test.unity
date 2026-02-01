@@ -144517,7 +144517,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 120978489}
-  - component: {fileID: 120978490}
   m_Layer: 5
   m_Name: CombatPanel
   m_TagString: Untagged
@@ -144547,33 +144546,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 0}
-  m_SizeDelta: {x: 350, y: 400}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: 335, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &120978490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 120978488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 120, y: 120}
-  m_Spacing: {x: 20, y: 20}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!1001 &126070147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144810,9 +144785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/5
-
-'
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -144999,8 +144972,9 @@ GameObject:
   - component: {fileID: 180274606}
   - component: {fileID: 180274605}
   - component: {fileID: 180274604}
+  - component: {fileID: 180274608}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Knockback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145022,10 +144996,10 @@ RectTransform:
   - {fileID: 600746466}
   m_Father: {fileID: 120978489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 245, y: -340}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180274604
 MonoBehaviour:
@@ -145109,6 +145083,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180274602}
   m_CullTransparentMesh: 1
+--- !u!114 &180274608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180274602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 6fc7e333a3e4f5e439f3f5b355d67c70, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 262002988}
+  skillLevelText: {fileID: 1490307274}
+  skillButton: {fileID: 180274604}
 --- !u!224 &190624691 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3143908109867664670, guid: 0e69008cc691fb94fa1778d4e2473e46, type: 3}
@@ -145126,8 +145117,9 @@ GameObject:
   - component: {fileID: 205632899}
   - component: {fileID: 205632898}
   - component: {fileID: 205632897}
+  - component: {fileID: 205632901}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: BloodLust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145236,6 +145228,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205632895}
   m_CullTransparentMesh: 1
+--- !u!114 &205632901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205632895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 5ef3634d64b08a44aa2dff92250a36fd, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 623045888}
+  skillLevelText: {fileID: 952392613}
+  skillButton: {fileID: 205632897}
 --- !u!4 &217753736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2803436350351869526, guid: ec1076a924937f140a62c1745891837f, type: 3}
@@ -146660,9 +146669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/5
-
-'
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -146804,9 +146811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/3
-
-'
+  m_text: 0/3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -147110,8 +147115,9 @@ GameObject:
   - component: {fileID: 423365306}
   - component: {fileID: 423365305}
   - component: {fileID: 423365304}
+  - component: {fileID: 423365308}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: WaterMagic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147220,6 +147226,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423365302}
   m_CullTransparentMesh: 1
+--- !u!114 &423365308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423365302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 0d092308feaf40d469508dba3fb0873b, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 416792224}
+  skillLevelText: {fileID: 373485081}
+  skillButton: {fileID: 423365304}
 --- !u!224 &430102242 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 540526959160478049, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
@@ -147773,6 +147796,8 @@ GameObject:
   - component: {fileID: 514092226}
   - component: {fileID: 514092225}
   - component: {fileID: 514092224}
+  - component: {fileID: 514092227}
+  - component: {fileID: 514092228}
   m_Layer: 0
   m_Name: SkillsCanvas
   m_TagString: Untagged
@@ -147793,6 +147818,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1340439998}
+  - {fileID: 1319203937}
   m_Father: {fileID: 473518021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -147863,6 +147889,43 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &514092227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514092222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5af06049933f44da02f921c50f8f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillTreeManagger
+  skillSlots:
+  - {fileID: 1787965699}
+  - {fileID: 1538951295}
+  - {fileID: 2084760797}
+  - {fileID: 1351399407}
+  - {fileID: 1004255203}
+  - {fileID: 180274608}
+  - {fileID: 1605612862}
+  - {fileID: 1770346301}
+  - {fileID: 423365308}
+  - {fileID: 205632901}
+  pointsText: {fileID: 1887407496}
+  availablePoints: 10
+--- !u!225 &514092228
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514092222}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -149276,8 +149339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 254, y: -39}
-  m_SizeDelta: {x: 1038.907, y: 1407.5312}
+  m_AnchoredPosition: {x: 250, y: -40}
+  m_SizeDelta: {x: 1057.4648, y: 1407.5312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716353147
 MonoBehaviour:
@@ -149293,7 +149356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -149684,9 +149747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/5
-
-'
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -150405,9 +150466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/5
-
-'
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -150790,8 +150849,9 @@ GameObject:
   - component: {fileID: 1004255201}
   - component: {fileID: 1004255200}
   - component: {fileID: 1004255199}
+  - component: {fileID: 1004255203}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Archery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150813,10 +150873,10 @@ RectTransform:
   - {fileID: 646017144}
   m_Father: {fileID: 120978489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105, y: -340}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004255199
 MonoBehaviour:
@@ -150900,6 +150960,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004255197}
   m_CullTransparentMesh: 1
+--- !u!114 &1004255203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004255197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 324f17cb003a15f4d8b2f25d712d16b5, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 1194637574}
+  skillLevelText: {fileID: 1884704319}
+  skillButton: {fileID: 1004255199}
 --- !u!1 &1038972482
 GameObject:
   m_ObjectHideFlags: 0
@@ -151122,9 +151199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/3
-
-'
+  m_text: 0/3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -153859,14 +153934,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319203936}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1279693465}
   - {fileID: 1887407495}
-  m_Father: {fileID: 1340439998}
+  m_Father: {fileID: 514092223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -153982,7 +154057,6 @@ RectTransform:
   - {fileID: 1798151162}
   - {fileID: 2056895407}
   - {fileID: 716353146}
-  - {fileID: 1319203937}
   m_Father: {fileID: 514092223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -154040,8 +154114,9 @@ GameObject:
   - component: {fileID: 1351399405}
   - component: {fileID: 1351399404}
   - component: {fileID: 1351399403}
+  - component: {fileID: 1351399407}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154063,10 +154138,10 @@ RectTransform:
   - {fileID: 1410462902}
   m_Father: {fileID: 120978489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 245, y: -200}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351399403
 MonoBehaviour:
@@ -154150,6 +154225,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351399401}
   m_CullTransparentMesh: 1
+--- !u!114 &1351399407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351399401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 4be742c083959684e866c7155e025538, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 906988460}
+  skillLevelText: {fileID: 2042507583}
+  skillButton: {fileID: 1351399403}
 --- !u!1 &1365075983
 GameObject:
   m_ObjectHideFlags: 0
@@ -154809,9 +154901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/5
-
-'
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -155029,9 +155119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/3
-
-'
+  m_text: 0/3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -155198,8 +155286,9 @@ GameObject:
   - component: {fileID: 1538951293}
   - component: {fileID: 1538951292}
   - component: {fileID: 1538951291}
+  - component: {fileID: 1538951295}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155221,10 +155310,10 @@ RectTransform:
   - {fileID: 1486266367}
   m_Father: {fileID: 120978489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 245, y: -60}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1538951291
 MonoBehaviour:
@@ -155308,6 +155397,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538951289}
   m_CullTransparentMesh: 1
+--- !u!114 &1538951295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538951289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 194a557b7cb4c024d9bdb0a596917a52, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 813035254}
+  skillLevelText: {fileID: 1051425762}
+  skillButton: {fileID: 1538951291}
 --- !u!224 &1542090485 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 540526959160478049, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
@@ -155440,8 +155546,9 @@ GameObject:
   - component: {fileID: 1605612860}
   - component: {fileID: 1605612859}
   - component: {fileID: 1605612858}
+  - component: {fileID: 1605612862}
   m_Layer: 5
-  m_Name: Button
+  m_Name: FireMagic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155550,6 +155657,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605612856}
   m_CullTransparentMesh: 1
+--- !u!114 &1605612862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605612856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: e9d7ec3c9a52c4f4d9c14eb34469ed47, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 483161467}
+  skillLevelText: {fileID: 176637484}
+  skillButton: {fileID: 1605612858}
 --- !u!4 &1664678053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2803436350351869526, guid: ec1076a924937f140a62c1745891837f, type: 3}
@@ -155811,8 +155935,9 @@ GameObject:
   - component: {fileID: 1770346299}
   - component: {fileID: 1770346298}
   - component: {fileID: 1770346297}
+  - component: {fileID: 1770346301}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ArrowShower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155921,6 +156046,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770346295}
   m_CullTransparentMesh: 1
+--- !u!114 &1770346301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770346295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: ede7f839e725688479b4b9d92f962c35, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 278234667}
+  skillLevelText: {fileID: 403668434}
+  skillButton: {fileID: 1770346297}
 --- !u!1 &1787965693
 GameObject:
   m_ObjectHideFlags: 0
@@ -155933,8 +156075,9 @@ GameObject:
   - component: {fileID: 1787965697}
   - component: {fileID: 1787965696}
   - component: {fileID: 1787965695}
+  - component: {fileID: 1787965699}
   m_Layer: 5
-  m_Name: Button
+  m_Name: AttackDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155956,10 +156099,10 @@ RectTransform:
   - {fileID: 1051430038}
   m_Father: {fileID: 120978489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105, y: -60}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787965695
 MonoBehaviour:
@@ -156043,6 +156186,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787965693}
   m_CullTransparentMesh: 1
+--- !u!114 &1787965699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787965693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: e1e9c6b03874dfc48af724955bfcabab, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 1407457081}
+  skillLevelText: {fileID: 801527370}
+  skillButton: {fileID: 1787965695}
 --- !u!1 &1798151161
 GameObject:
   m_ObjectHideFlags: 0
@@ -156638,9 +156798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/1
-
-'
+  m_text: 0/1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -159186,9 +159344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0/5
-
-'
+  m_text: 0/5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -159585,8 +159741,9 @@ GameObject:
   - component: {fileID: 2084760795}
   - component: {fileID: 2084760794}
   - component: {fileID: 2084760793}
+  - component: {fileID: 2084760797}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159608,10 +159765,10 @@ RectTransform:
   - {fileID: 64790772}
   m_Father: {fileID: 120978489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 105, y: -200}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084760793
 MonoBehaviour:
@@ -159695,6 +159852,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084760791}
   m_CullTransparentMesh: 1
+--- !u!114 &2084760797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084760791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c86f8ac2fb9804daca15866c6c91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSlot
+  skillSO: {fileID: 11400000, guid: 212aa9988b9a1054c8c0ceb59c1a92cc, type: 2}
+  currentLevel: 0
+  skillIcon: {fileID: 1237592571}
+  skillLevelText: {fileID: 1479754526}
+  skillButton: {fileID: 2084760793}
 --- !u!1001 &2093750886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160005,7 +160179,7 @@ Transform:
   m_GameObject: {fileID: 2141565293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.843099, y: -0.03937763, z: 0}
+  m_LocalPosition: {x: -17.4, y: 4.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
