@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GoldBoost
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
   skillName: Gold Boost
-  maxLevel: 5
+  maxLevel: 10
   skillIcon: {fileID: 21300000, guid: 817c5cbc269d2b344848a36aab84b6cf, type: 3}

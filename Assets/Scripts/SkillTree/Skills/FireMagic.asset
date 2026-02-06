@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FireMagic
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
   skillName: Fire Magic
-  maxLevel: 5
+  maxLevel: 10
   skillIcon: {fileID: 21300000, guid: 5182be4db3c5be946af47fb1ede1abbc, type: 3}

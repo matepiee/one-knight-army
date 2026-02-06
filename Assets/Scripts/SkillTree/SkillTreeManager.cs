@@ -10,14 +10,18 @@ public class SkillTreeManager : MonoBehaviour
     public int availablePoints;
 
 
+
     private void OnEnable()
     {
         SkillSlot.OnAbilityPointSpent += HandleAbilityPointsSpent;
+        ExpManager.OnLevelUp += UpdateAbilityPoints;
     }
 
     private void OnDisable()
     {
         SkillSlot.OnAbilityPointSpent -= HandleAbilityPointsSpent;
+        ExpManager.OnLevelUp -= UpdateAbilityPoints;
+
     }
 
 
@@ -32,7 +36,7 @@ public class SkillTreeManager : MonoBehaviour
 
     private void CheckAvailablePoints(SkillSlot slot)
     {
-        if (availablePoints > 0 )
+        if (availablePoints > 0)
         {
             slot.TryUpgradeSkill();
         }
@@ -40,7 +44,7 @@ public class SkillTreeManager : MonoBehaviour
 
     private void HandleAbilityPointsSpent(SkillSlot skillSlot)
     {
-        if (availablePoints>0)
+        if (availablePoints > 0)
         {
             UpdateAbilityPoints(-1);
         }
@@ -51,4 +55,6 @@ public class SkillTreeManager : MonoBehaviour
         availablePoints += amount;
         pointsText.text = "Points: " + availablePoints.ToString();
     }
+
+    
 }
