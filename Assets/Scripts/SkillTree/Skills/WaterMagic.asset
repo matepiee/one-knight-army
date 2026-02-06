@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: WaterMagic
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
   skillName: Water Magic
-  maxLevel: 5
+  maxLevel: 10
   skillIcon: {fileID: 21300000, guid: 9c46ebde711ca374f816e59a555ba0ab, type: 3}
