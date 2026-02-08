@@ -45,11 +45,21 @@ public class StatsUI : MonoBehaviour
     {
         statsSlots[1].GetComponentInChildren<TMP_Text>().text = "Agility: " + StatsManager.Instance.speed;
     }
+    public void UpdateVitality()
+    {
+        statsSlots[2].GetComponentInChildren<TMP_Text>().text = "Vitality: " + StatsManager.Instance.maxHp/10;
+    }
+    public void UpdateEndurance()
+    {
+        statsSlots[3].GetComponentInChildren<TMP_Text>().text = "Endurance: " + StatsManager.Instance.armor;
+    }
 
     public void UpdateAllStats()
     {
         UpdateStrength();
         UpdateAgility();
+        UpdateVitality();
+        UpdateEndurance();
     }
 
 }
