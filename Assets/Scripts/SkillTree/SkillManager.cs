@@ -22,6 +22,19 @@ public class SkillManager : MonoBehaviour
             case "Max Health Boost":
                 StatsManager.Instance.UpdateMaxHealth(10);
                 break;
+            case "Attack Damage Boost":
+                StatsManager.Instance.UpdateAttackDamage(5);
+                break;
+           case "Speed Boost":
+                StatsManager.Instance.UpdateSpeed(1);
+                break;
+            case "Armor Boost":
+                StatsManager.Instance.UpdateArmor(5);
+                break;
+            case "Gold Boost":
+                StatsManager.Instance.UpdateGoldGain(1);
+                break;
+            
 
             default:
                 Debug.Log("Unknown skill: " + skillName);

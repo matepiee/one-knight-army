@@ -13,6 +13,8 @@ public class StatsManager : MonoBehaviour
     public float knockbackForce;
     public float knockbackTime;
     public float stunTime;
+    public int armor;
+    public float goldGain;
 
     [Header("Movement Stats")]
     public float speed;
@@ -36,5 +38,24 @@ public class StatsManager : MonoBehaviour
         healthText.text = "HP: " +currentHp +"/ " + maxHp;
     }
 
+    public void UpdateAttackDamage(int amount)
+    {
+        damage += amount;
+    }
+
+    public void UpdateSpeed(float amount)
+    {
+        speed += amount;
+    }
+
+    public void UpdateArmor(int amount)
+    {
+        armor += amount;
+    }
+
+    public void UpdateGoldGain(float amount)
+    {
+        goldGain += amount;  
+    }
 
 }
