@@ -48,6 +48,10 @@ public class ShopKeeper : MonoBehaviour
         {
             anim.SetBool("playerinrange", false);
             playerinrange = false;
+            isShopOpen = false;
+            shopCanvasGroup.alpha = 0;
+            shopCanvasGroup.blocksRaycasts = false;
+            shopCanvasGroup.interactable = false;
         }
     }
 }
