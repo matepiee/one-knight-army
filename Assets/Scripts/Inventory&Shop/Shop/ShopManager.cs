@@ -17,7 +17,7 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         PopulateShopItems();
-        OnShopStateChanged?.Invoke(this, true);
+        OnShopStateChanged?.Invoke(this, false);
     }
     public void PopulateShopItems()
     {
@@ -36,15 +36,25 @@ public class ShopManager : MonoBehaviour
 
     public void TryBuyItem(ItemSO itemSO, int price)
     {
-        if (itemSO != null && inventoryManager.gold >= price)
+        Debug.Log($"Trying to buy: {itemSO.itemName}, Price: {price}");
+        if (itemSO == null)
         {
-            if (HasSpaceForItem(itemSO))
-            {
-                inventoryManager.gold -= price;
-                inventoryManager.goldText.text = inventoryManager.gold.ToString();
-                inventoryManager.AddItem(itemSO, 1);
-            }
+            return;
         }
+        if (inventoryManager.gold < price)
+        {
+            Debug.Log("Not enough gold");
+            return;
+        }
+        if (!HasSpaceForItem(itemSO))
+        {
+            Debug.Log("Not enough slots in inventory");
+            return;
+        }
+        Debug.Log("Succesful buy");
+        inventoryManager.gold -= price;
+        inventoryManager.goldText.text = inventoryManager.gold.ToString();
+        inventoryManager.AddItem(itemSO, 1);
     }
 
     private bool HasSpaceForItem(ItemSO itemSO)
