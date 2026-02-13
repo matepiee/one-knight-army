@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 11948645}
   - component: {fileID: 11948644}
   m_Layer: 0
-  m_Name: Button
+  m_Name: SkillExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,19 +302,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11948645}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 514092230}
-        m_TargetAssemblyTypeName: SkillTreeToggler, Assembly-CSharp
-        m_MethodName: SkillTreeToggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &11948645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148877,8 +148865,8 @@ CanvasGroup:
   m_GameObject: {fileID: 514092222}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &514092229
 MonoBehaviour:
@@ -148905,7 +148893,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillTreeToggler
   skillsCanvas: {fileID: 514092228}
-  button: {fileID: 11948644}
+  statsCanvas: {fileID: 1985285705}
+  enter: {fileID: 649393013}
+  leave: {fileID: 11948644}
 --- !u!1 &517199037
 GameObject:
   m_ObjectHideFlags: 0
@@ -149580,6 +149570,7 @@ GameObject:
   - component: {fileID: 567655572}
   - component: {fileID: 567655573}
   - component: {fileID: 567655574}
+  - component: {fileID: 567655575}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -149741,6 +149732,7 @@ MonoBehaviour:
   facingDirection: 1
   rb: {fileID: 567655566}
   anim: {fileID: 567655572}
+  isShooting: 0
   player_Combat: {fileID: 567655573}
 --- !u!114 &567655571
 MonoBehaviour:
@@ -149803,7 +149795,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 567655564}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6144233892ba3674b9bfe852904a8f03, type: 3}
   m_Name: 
@@ -149812,6 +149804,22 @@ MonoBehaviour:
   arrowPrefab: {fileID: 6134833091059812912, guid: c8954e3ca7ceb264db8156b65e0101e0, type: 3}
   shootCooldown: 0.5
   shootTimer: 0
+  playerMovement: {fileID: 567655570}
+  anim: {fileID: 567655572}
+--- !u!114 &567655575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567655564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc56e64264a83304aa68cdf00d9ff7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_ChangeEquipment
+  combat: {fileID: 567655573}
+  bow: {fileID: 567655574}
 --- !u!1 &572182807
 GameObject:
   m_ObjectHideFlags: 0
@@ -150798,7 +150806,7 @@ GameObject:
   - component: {fileID: 649393013}
   - component: {fileID: 649393012}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SkillEnter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150837,7 +150845,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillTreeToggler
   skillsCanvas: {fileID: 514092228}
-  button: {fileID: 649393013}
+  statsCanvas: {fileID: 0}
+  enter: {fileID: 0}
+  leave: {fileID: 0}
 --- !u!114 &649393013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150881,19 +150891,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 649393014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1985285706}
-        m_TargetAssemblyTypeName: SkillTreeToggler, Assembly-CSharp
-        m_MethodName: SkillTreeToggle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &649393014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154575,7 +154573,7 @@ GameObject:
   - component: {fileID: 1130684202}
   - component: {fileID: 1130684201}
   - component: {fileID: 1130684203}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collision-Low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160857,8 +160855,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1985285700}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1985285706
 MonoBehaviour:
@@ -160873,7 +160871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillTreeToggler
   skillsCanvas: {fileID: 514092228}
-  button: {fileID: 649393013}
+  statsCanvas: {fileID: 1985285705}
+  enter: {fileID: 649393013}
+  leave: {fileID: 11948644}
 --- !u!1 &1987308704
 GameObject:
   m_ObjectHideFlags: 0
@@ -160886,7 +160886,7 @@ GameObject:
   - component: {fileID: 1987308707}
   - component: {fileID: 1987308706}
   - component: {fileID: 1987308708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Collision-High
   m_TagString: Untagged
   m_Icon: {fileID: 0}
