@@ -6,7 +6,11 @@ public class Player_Movement : MonoBehaviour
     public int facingDirection = 1;
     public Rigidbody2D rb;
     public Animator anim;
+
+
     private bool isKnockedBack;
+    public bool isShooting;
+
     public Player_Combat player_Combat;
 
     private void Update()
@@ -19,7 +23,11 @@ public class Player_Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isKnockedBack == false)
+        if (isShooting == true)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+        else if (isKnockedBack == false)
         {
             float horizontal = Input.GetAxisRaw("Horizontal"); // GetAxisRaw a pontosabb irányításért
             float vertical = Input.GetAxisRaw("Vertical");
