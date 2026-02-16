@@ -5,6 +5,7 @@ using TMPro;
 public class StatsManager : MonoBehaviour
 {
     public static StatsManager Instance;
+    public StatsUI statsUI;
     public TMP_Text healthText;
 
     [Header("Combat Stats")]
@@ -25,7 +26,7 @@ public class StatsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance==null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -35,7 +36,19 @@ public class StatsManager : MonoBehaviour
     public void UpdateMaxHealth(int amount)
     {
         maxHp += amount;
-        healthText.text = "HP: " +currentHp +"/ " + maxHp;
+        healthText.text = "HP: " + currentHp + "/ " + maxHp;
+    }
+
+    public void UpdateHealth(int amount)
+    {
+        currentHp += amount;
+
+        if (currentHp >= maxHp)
+        {
+            currentHp = maxHp;
+        }
+
+        healthText.text = "HP: " + currentHp + "/ " + maxHp;
     }
 
     public void UpdateAttackDamage(int amount)
@@ -46,6 +59,8 @@ public class StatsManager : MonoBehaviour
     public void UpdateSpeed(float amount)
     {
         speed += amount;
+
+        statsUI.UpdateAllStats();
     }
 
     public void UpdateArmor(int amount)
@@ -55,7 +70,7 @@ public class StatsManager : MonoBehaviour
 
     public void UpdateGoldGain(float amount)
     {
-        goldGain += amount;  
+        goldGain += amount;
     }
 
 }

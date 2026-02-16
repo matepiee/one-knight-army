@@ -61,14 +61,14 @@ public class ShopManager : MonoBehaviour
     {
         foreach (var slot in inventoryManager.itemSlots)
         {
-            if(slot.itemSO == itemSO && slot.quantity < itemSO.stackSize)
+            if (slot.itemSO == itemSO && slot.quantity < itemSO.stackSize)
             {
                 return true;
             }
-            else if(slot.itemSO == null)
+            else if (slot.itemSO == null)
             {
                 return true;
-            }   
+            }
         }
         return false;
     }
@@ -82,16 +82,21 @@ public class ShopManager : MonoBehaviour
 
         foreach (var slot in shopSlots)
         {
-                if (slot.itemSO == itemSO)
-                {
+            if (slot.itemSO == itemSO)
+            {
 
-                    inventoryManager.gold += slot.price; // slot.price - {amount} // If you want the item to be sold at a lower price
-                    inventoryManager.goldText.text = inventoryManager.gold.ToString();
-                    return;
-                }
-            
-            
+                inventoryManager.gold += slot.price; // slot.price - {amount} // If you want the item to be sold at a lower price
+                inventoryManager.goldText.text = inventoryManager.gold.ToString();
+                return;
+            }
+
+
         }
+    }
+
+    public void ToggleShop(bool isOpen)
+    {
+        OnShopStateChanged?.Invoke(this, isOpen);
     }
 }
 

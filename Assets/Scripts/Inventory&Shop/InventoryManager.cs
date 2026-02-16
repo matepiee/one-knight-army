@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class InventoryManager : MonoBehaviour
 {
     public InventorySlot[] itemSlots;
-    //useItem (later on)
+    public UseItem useItem;
     public int gold;
     public TMP_Text goldText;
     public GameObject lootPrefab;
@@ -79,7 +79,7 @@ public class InventoryManager : MonoBehaviour
     {
         DropLoot(slot.itemSO, 1);
         slot.quantity--;
-        if(slot.quantity <= 0)
+        if (slot.quantity <= 0)
         {
             slot.itemSO = null;
         }
@@ -97,9 +97,15 @@ public class InventoryManager : MonoBehaviour
     {
         if (slot.itemSO != null && slot.quantity >= 0)
         {
-            Debug.Log("Trying to use item: " + slot.itemSO.itemName);
+            useItem.ApplyItemEffects(slot.itemSO);
+            slot.quantity--;
+            if (slot.quantity <= 0)
+            {
+                slot.itemSO = null;
+            }
+            slot.UpdateUI();
         }
     }
 
-   
+
 }
