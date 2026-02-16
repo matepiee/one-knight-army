@@ -2018,11 +2018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761e954e476f719429199f951be8aa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
-  shopItems:
-  - itemSO: {fileID: 11400000, guid: af99be14469f18a49bdaaf534ccc9d88, type: 2}
-    price: 2
-  - itemSO: {fileID: 11400000, guid: 5723e2bd7c8f3da43ab9b42b7ef372a0, type: 2}
-    price: 5
   shopSlots:
   - {fileID: 1612795517}
   - {fileID: 1371289817}
@@ -4755,7 +4750,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275542073882004610, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_Name
-      value: ShopButton
+      value: ItemButton
       objectReference: {fileID: 0}
     - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_Pivot.x
@@ -4836,6 +4831,34 @@ PrefabInstance:
     - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1531688392}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenItemShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopKeeper, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8972,7 +8995,6 @@ RectTransform:
   m_Children:
   - {fileID: 536831861}
   - {fileID: 1976010015}
-  - {fileID: 1166876560}
   m_Father: {fileID: 1753059121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -155365,112 +155387,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1166876559
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 851800507}
-    m_Modifications:
-    - target: {fileID: 1275542073882004610, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_Name
-      value: ShopButton (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3874624418034224264, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-      propertyPath: m_text
-      value: Armor
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
---- !u!224 &1166876560 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
-  m_PrefabInstance: {fileID: 1166876559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1169390128
 GameObject:
   m_ObjectHideFlags: 0
@@ -159017,6 +158933,20 @@ MonoBehaviour:
   anim: {fileID: 1109018550}
   shopCanvasGroup: {fileID: 211304531}
   shopManager: {fileID: 211304530}
+  shopItems:
+  - itemSO: {fileID: 11400000, guid: af99be14469f18a49bdaaf534ccc9d88, type: 2}
+    price: 3
+  - itemSO: {fileID: 11400000, guid: 5723e2bd7c8f3da43ab9b42b7ef372a0, type: 2}
+    price: 5
+  shopPotions:
+  - itemSO: {fileID: 11400000, guid: c2b0d435b5cdb8f4bb1fcbf8f6202e07, type: 2}
+    price: 10
+  - itemSO: {fileID: 11400000, guid: 23531828d1cda534e94470a8c6567872, type: 2}
+    price: 10
+  - itemSO: {fileID: 11400000, guid: c11450bb2a3b65c40932b69158e4b371, type: 2}
+    price: 10
+  - itemSO: {fileID: 11400000, guid: e131b6fc8837e6641a714f31b84888ef, type: 2}
+    price: 20
   isShopOpen: 0
 --- !u!58 &1531688393
 CircleCollider2D:
@@ -159838,7 +159768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8425920df1d0f43807fbc2be950474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsManager
-  statsUI: {fileID: 0}
+  statsUI: {fileID: 1224742987}
   healthText: {fileID: 2070484807}
   damage: 10
   weaponRange: 1
@@ -222905,7 +222835,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275542073882004610, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_Name
-      value: ShopButton (1)
+      value: PotionButton
       objectReference: {fileID: 0}
     - target: {fileID: 2615131494623230724, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_Pivot.x
@@ -222989,7 +222919,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3874624418034224264, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_text
-      value: Weapons
+      value: Potions
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1531688392}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenPotionShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopKeeper, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257760196279669341, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
