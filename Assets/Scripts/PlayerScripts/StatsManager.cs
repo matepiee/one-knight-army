@@ -59,8 +59,6 @@ public class StatsManager : MonoBehaviour
     public void UpdateSpeed(float amount)
     {
         speed += amount;
-
-        statsUI.UpdateAllStats();
     }
 
     public void UpdateArmor(int amount)
