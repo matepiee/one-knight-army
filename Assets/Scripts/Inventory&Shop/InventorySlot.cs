@@ -50,7 +50,8 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
                 }
                 else
                 {
-
+                    if (itemSO.currentHealth > 0 && StatsManager.Instance.currentHp >= StatsManager.Instance.maxHp) //Does not use healing item if player is already full
+                        return;
                     inventoryManager.UseItem(this);
                 }
             }

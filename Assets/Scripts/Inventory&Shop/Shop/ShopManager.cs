@@ -93,6 +93,11 @@ public class ShopManager : MonoBehaviour
             
         }
     }
+
+    public void ToggleShop(bool isOpen)
+    {
+        OnShopStateChanged?.Invoke(this, isOpen);
+    }
 }
 
 [System.Serializable]

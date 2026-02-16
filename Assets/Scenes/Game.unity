@@ -1235,6 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopKeeper
   anim: {fileID: 682883603}
   shopCanvasGroup: {fileID: 1835252720}
+  shopManager: {fileID: 1835252721}
   isShopOpen: 0
 --- !u!1 &86437389
 GameObject:
@@ -146753,7 +146754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3874624418034224264, guid: 03391e6cba558f040b019ac93a4ddefe, type: 3}
       propertyPath: m_text
-      value: Weapons
+      value: Potions
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -147273,6 +147274,7 @@ MonoBehaviour:
   facingDirection: 1
   rb: {fileID: 567655566}
   anim: {fileID: 567655572}
+  isShooting: 0
   player_Combat: {fileID: 567655573}
 --- !u!114 &567655571
 MonoBehaviour:
@@ -154365,6 +154367,7 @@ GameObject:
   - component: {fileID: 2050313597}
   - component: {fileID: 2050313596}
   - component: {fileID: 2050313600}
+  - component: {fileID: 2050313601}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -154474,10 +154477,23 @@ MonoBehaviour:
   - {fileID: 951891096}
   - {fileID: 1460800063}
   - {fileID: 645494073}
+  useItem: {fileID: 2050313601}
   gold: 10
   goldText: {fileID: 434772271}
   lootPrefab: {fileID: 8274557114179846363, guid: ec1076a924937f140a62c1745891837f, type: 3}
   player: {fileID: 567655569}
+--- !u!114 &2050313601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050313595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b3541cd66f0894295acbf3f30b163a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UseItem
 --- !u!4 &2050573086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2803436350351869526, guid: ec1076a924937f140a62c1745891837f, type: 3}
@@ -154691,7 +154707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8425920df1d0f43807fbc2be950474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsManager
-  healthText: {fileID: 0}
+  statsUI: {fileID: 432661935}
+  healthText: {fileID: 1448762825}
   damage: 10
   weaponRange: 1
   knockbackForce: 20
