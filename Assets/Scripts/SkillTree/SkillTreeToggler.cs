@@ -10,7 +10,6 @@ public class SkillTreeToggler : MonoBehaviour
     public Button button;
     public void SkillTreeToggle()
     {
-<<<<<<< Updated upstream
         if (skillTreeOpen)
         {
             Time.timeScale = 1;
@@ -26,7 +25,6 @@ public class SkillTreeToggler : MonoBehaviour
             skillsCanvas.interactable = true;
             skillTreeOpen = true;
         }
-=======
         enter.onClick.AddListener(SkillTreeEnter);
         leave.onClick.AddListener(SkillTreeLeave);
 
@@ -54,7 +52,6 @@ public class SkillTreeToggler : MonoBehaviour
         statsCanvas.alpha = 1;
         statsCanvas.blocksRaycasts = true;
         statsCanvas.interactable = true;
->>>>>>> Stashed changes
 
     }
 
