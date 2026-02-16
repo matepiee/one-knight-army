@@ -6,9 +6,18 @@ using System;
 public class SkillTreeToggler : MonoBehaviour
 {
     public CanvasGroup skillsCanvas;
+<<<<<<< Updated upstream
     private bool skillTreeOpen=false;
     public Button button;
     public void SkillTreeToggle()
+=======
+    public CanvasGroup statsCanvas;
+    private bool skillTreeOpen = false;
+    public Button enter;
+    public Button leave;
+
+    private void Start()
+>>>>>>> Stashed changes
     {
         if (skillTreeOpen)
         {
@@ -55,6 +64,10 @@ public class SkillTreeToggler : MonoBehaviour
 
     }
 
+<<<<<<< Updated upstream
 
     
 }
+=======
+}
+>>>>>>> Stashed changes

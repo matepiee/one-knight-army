@@ -207,6 +207,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (6)
@@ -219,6 +230,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -905,6 +927,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (5)
@@ -917,6 +950,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2590,6 +2634,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (2)
@@ -2602,6 +2657,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3699,8 +3765,13 @@ MonoBehaviour:
     Things about the
     item'
   m_isRightToLeft: 0
+<<<<<<< Updated upstream
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+=======
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5633,6 +5704,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 709925551519529628, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -5681,6 +5763,17 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -69774,8 +69867,11 @@ MonoBehaviour:
   arrowPrefab: {fileID: 6134833091059812912, guid: c8954e3ca7ceb264db8156b65e0101e0, type: 3}
   shootCooldown: 0.5
   shootTimer: 0
+<<<<<<< Updated upstream
   playerMovement: {fileID: 938411890}
   anim: {fileID: 938411888}
+=======
+>>>>>>> Stashed changes
 --- !u!114 &938411887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69845,7 +69941,10 @@ MonoBehaviour:
   facingDirection: 1
   rb: {fileID: 938411891}
   anim: {fileID: 938411888}
+<<<<<<< Updated upstream
   isShooting: 0
+=======
+>>>>>>> Stashed changes
   player_Combat: {fileID: 938411887}
 --- !u!50 &938411891
 Rigidbody2D:
@@ -72262,6 +72361,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (3)
@@ -72274,6 +72384,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72581,8 +72702,13 @@ MonoBehaviour:
       m_Calls: []
   m_text: Item Name
   m_isRightToLeft: 0
+<<<<<<< Updated upstream
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+=======
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -219271,6 +219397,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (4)
@@ -219283,6 +219420,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -219924,6 +220072,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (1)
@@ -219936,6 +220095,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -220342,6 +220512,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 692564306579288211, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     - target: {fileID: 878310378589829088, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
       propertyPath: m_Name
       value: ShopSlot (7)
@@ -220354,6 +220535,17 @@ PrefabInstance:
       propertyPath: shopManager
       value: 
       objectReference: {fileID: 19682408}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6621398630420958858, guid: 3a34d12e6ed5fb14383e235b2da7a2be, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
