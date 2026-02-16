@@ -42,7 +42,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                if (activeShop != null) 
+                if (activeShop != null)
                 {
                     activeShop.SellItem(itemSO);
                     quantity--;
@@ -50,7 +50,8 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
                 }
                 else
                 {
-
+                    if (itemSO.currentHealth > 0 && StatsManager.Instance.currentHp >= StatsManager.Instance.maxHp) //Does not use healing item if player is already full
+                        return;
                     inventoryManager.UseItem(this);
                 }
             }
@@ -61,11 +62,11 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-    
+
 
     public void UpdateUI()
     {
-        if(quantity <= 0)
+        if (quantity <= 0)
         {
             itemSO = null;
         }
