@@ -48,6 +48,7 @@ public class PauseManager : MonoBehaviour
     {
         pauseCanvas.SetActive(false);
         Time.timeScale = 1;
+        isPaused = false;
     }
 
     public void BackToMainMenu()
