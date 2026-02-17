@@ -42,12 +42,6 @@ public class ShopKeeper : MonoBehaviour
                     shopCanvasGroup.blocksRaycasts = false;
                     shopCanvasGroup.interactable = false;
                 }
-                /*
-                if (shopManager != null)
-                {
-                    shopManager.ToggleShop(isShopOpen);
-                }
-                */
             }
         }
     }
