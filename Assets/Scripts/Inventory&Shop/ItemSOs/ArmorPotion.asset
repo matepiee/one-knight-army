@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 592affd8fb0c8f24a848e77f9576aea7, type: 3}
-  m_Name: Swiftness Potion
+  m_Name: ArmorPotion
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
-  itemName: Swiftness Potion
-  itemDescription: It's for more speed.
-  icon: {fileID: -6890421085032631757, guid: 3b52e1cf2c9784d48bd18ace0c4b5ab9, type: 3}
+  itemName: Armor Potion
+  itemDescription: It's for more armor
+  icon: {fileID: 21300000, guid: 9922c4ab17421644b884af64dd24ca2e, type: 3}
   isGold: 0
   stackSize: 3
   currentHealth: 0
   maxHealth: 0
-  speed: 4
+  speed: 0
   damage: 0
-  duration: 60
+  armor: 20
+  goldgain: 0
+  duration: 100

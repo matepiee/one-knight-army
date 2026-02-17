@@ -15,10 +15,9 @@ public class ItemSO : ScriptableObject
     public int maxHealth;
     public int speed;
     public int damage;
-    /* Ha akarunk armor és goldgain potit
     public int armor;
     public int goldgain;
-    */
+
     [Header("Temporary items")]
     public float duration;
 }
