@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 3645473840853010063}
   - component: {fileID: 2928247619250550179}
   m_Layer: 9
-  m_Name: Skeleton
+  m_Name: PaddleFish
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6471116574714101982, guid: 0807e1c079fbc48eaa6d094e7ef359f4, type: 3}
+  m_Sprite: {fileID: 7581072064079349556, guid: bf2f1478bf328471bb80074c739c6489, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   knockbackForce: 10
   stunTime: 0.5
   weaponRange: 1
-  damage: 10
+  damage: 15
 --- !u!114 &1208620365344303077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   playerDetectRange: 6
   speed: 5
   attackRange: 1
-  attackCooldown: 2
+  attackCooldown: 1
   baseReachDistance: 0.5
   detectionPoint: {fileID: 6778098700617303017}
   playerLayer:
@@ -320,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 2292515491538580860}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28917adddc2af5744909eb3427585a0a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 74f0854cd315fcd49848679d01114623, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -344,12 +344,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 10
-  goldReward: 3
+  expReward: 25
+  goldReward: 5
   goldText: {fileID: 0}
   slider: {fileID: 2037561545098950151}
-  currentHp: 50
-  maxHp: 50
+  currentHp: 60
+  maxHp: 60
 --- !u!114 &2928247619250550179
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -57,6 +57,11 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void StartOver()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
     public void OpenSettings()
     {
         settingsCanvas.SetActive(true);

@@ -9,12 +9,9 @@ public class MainMenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(1);
     }
-    public void OpenSettings()
-    {
-        SceneManager.LoadScene(2);
-    }
+
     public void QuitGame()
     {
         Debug.Log("Kilépés...");

@@ -4,15 +4,20 @@ public class Enemy_Movement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Transform player;
+    private Transform baseTarget;
     private int facingDirection = 1;
     private Animator anim;
     private EnemyState enemyState;
     private float attackCooldownTimer;
 
+    [Header("Options")]
     public float playerDetectRange = 5;
     public float speed = 5f;
     public float attackRange = 1;
     public float attackCooldown = 2;
+    public float baseReachDistance = 0.5f;
+
+    [Header("References")]
     public Transform detectionPoint;
     public LayerMask playerLayer;
 
@@ -20,6 +25,13 @@ public class Enemy_Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        GameObject baseObj = GameObject.FindGameObjectWithTag("Base");
+        if (baseObj != null)
+        {
+            baseTarget = baseObj.transform;
+        }
+
         ChangeState(EnemyState.Idle);
     }
 
@@ -27,15 +39,28 @@ public class Enemy_Movement : MonoBehaviour
     {
         if (enemyState != EnemyState.Knockback)
         {
-
             CheckForPlayer();
+
             if (attackCooldownTimer > 0)
             {
                 attackCooldownTimer -= Time.deltaTime;
             }
+
             if (enemyState == EnemyState.Chasing)
             {
-                Chase();
+                Move(player);
+            }
+            else if (enemyState == EnemyState.Idle)
+            {
+                if (baseTarget != null)
+                {
+                    Move(baseTarget);
+                    CheckBaseArrival();
+                }
+                else
+                {
+                    rb.linearVelocity = Vector2.zero;
+                }
             }
             else if (enemyState == EnemyState.Attacking)
             {
@@ -44,44 +69,68 @@ public class Enemy_Movement : MonoBehaviour
         }
     }
 
-    void Chase()
+    void Move(Transform target)
     {
+        if (target == null) return;
 
-        if (player.position.x > transform.position.x && facingDirection == -1 || player.position.x < transform.position.x && facingDirection == 1)
-            {
-                Flip();
-            }
-            Vector2 direction = (player.position - transform.position).normalized;
-            rb.linearVelocity = direction * speed;
+        if (target.position.x > transform.position.x && facingDirection == -1 || target.position.x < transform.position.x && facingDirection == 1)
+        {
+            Flip();
+        }
+
+        Vector2 direction = (target.position - transform.position).normalized;
+        rb.linearVelocity = direction * speed;
+    }
+
+    void CheckBaseArrival()
+    {
+        if (Vector2.Distance(transform.position, baseTarget.position) <= baseReachDistance)
+        {
+            AttackBase();
+        }
+    }
+
+    void AttackBase()
+    {
+        Base_Health baseHealth = baseTarget.GetComponent<Base_Health>();
+
+        if (baseHealth != null)
+        {
+            baseHealth.TakeDamage(1);
+        }
+
+        Destroy(gameObject);
     }
 
     private void CheckForPlayer()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectRange, playerLayer);
 
-        if (hits.Length>0)
+        if (hits.Length > 0)
         {
-            player=hits[0].transform;
+            player = hits[0].transform;
 
-            if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCooldownTimer <= 0)
+            float distance = Vector2.Distance(transform.position, player.position);
+
+            if (distance <= attackRange && attackCooldownTimer <= 0)
             {
-                attackCooldownTimer = 2;
+                attackCooldownTimer = attackCooldown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
+            else if (distance > attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Chasing);
             }
-
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
-            ChangeState(EnemyState.Idle);
+            if (enemyState != EnemyState.Idle)
+            {
+                ChangeState(EnemyState.Idle);
+            }
         }
-
-
     }
+
     void Flip()
     {
         facingDirection *= -1;
@@ -90,33 +139,27 @@ public class Enemy_Movement : MonoBehaviour
 
     public void ChangeState(EnemyState newState)
     {
-        if (enemyState == EnemyState.Idle)
-        {
-            anim.SetBool("IsIdle", false);
-        }
-        else if (enemyState == EnemyState.Chasing)
-        {
-            anim.SetBool("IsChasing", false);
-        }
-        else if (enemyState == EnemyState.Attacking)
-        {
-            anim.SetBool("IsAttacking", false);
-        }
+        if (enemyState == newState) return;
+
+        anim.SetBool("IsIdle", false);
+        anim.SetBool("IsChasing", false);
+        anim.SetBool("IsAttacking", false);
 
         enemyState = newState;
 
-        if (enemyState == EnemyState.Idle)
-        {
-            anim.SetBool("IsIdle", true);
-        }
-        else if (enemyState == EnemyState.Chasing)
-        {
-            anim.SetBool("IsChasing", true);
-        }
-        else if (enemyState == EnemyState.Attacking)
-        {
-            anim.SetBool("IsAttacking", true);
-        }
+        if (enemyState == EnemyState.Idle) anim.SetBool("IsIdle", true);
+        else if (enemyState == EnemyState.Chasing) anim.SetBool("IsChasing", true);
+        else if (enemyState == EnemyState.Attacking) anim.SetBool("IsAttacking", true);
+    }
+
+    public void ResetToIdle()
+    {
+        ChangeState(EnemyState.Idle);
+    }
+
+    public void ResetToChasing()
+    {
+        ChangeState(EnemyState.Chasing);
     }
 
     private void OnDrawGizmosSelected()
@@ -124,7 +167,6 @@ public class Enemy_Movement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectionPoint.position, playerDetectRange);
     }
-
 }
 
 public enum EnemyState
@@ -132,5 +174,5 @@ public enum EnemyState
     Idle,
     Chasing,
     Attacking,
-    Knockback,
+    Knockback
 }

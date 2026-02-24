@@ -29,7 +29,7 @@ public class Player_Movement : MonoBehaviour
         }
         else if (isKnockedBack == false)
         {
-            float horizontal = Input.GetAxisRaw("Horizontal"); // GetAxisRaw a pontosabb irányításért
+            float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
             if (horizontal > 0 && transform.localScale.x < 0 || horizontal < 0 && transform.localScale.x > 0)
@@ -40,7 +40,7 @@ public class Player_Movement : MonoBehaviour
             anim.SetFloat("horizontal", Mathf.Abs(horizontal));
             anim.SetFloat("vertical", Mathf.Abs(vertical));
 
-            // Fontos: Mindig normalizáljuk az irányt, különben átlósan gyorsabb lenne!
+            
             Vector2 movement = new Vector2(horizontal, vertical).normalized;
             rb.linearVelocity = movement * StatsManager.Instance.speed;
         }
