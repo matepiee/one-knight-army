@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 155cd705346ac40728af0637c194c685, type: 2}
+  m_Motion: {fileID: 7400000, guid: 97c230f82394f433bb3f9d79691909e0, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BearController
+  m_Name: MinotaurController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsAttacking
@@ -138,7 +138,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f14480c03036a4a0f9f6600ba72ded89, type: 2}
+  m_Motion: {fileID: 7400000, guid: d562388fe4bfb4c28b16689181971975, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

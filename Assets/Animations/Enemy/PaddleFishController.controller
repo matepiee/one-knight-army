@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 155cd705346ac40728af0637c194c685, type: 2}
+  m_Motion: {fileID: 7400000, guid: 119f5823c73094570bd13ba52bd5c784, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BearController
+  m_Name: PaddleFishController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsAttacking
@@ -138,7 +138,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f14480c03036a4a0f9f6600ba72ded89, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0d64a6d6e2e1d4113a1f2250f5ab185a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

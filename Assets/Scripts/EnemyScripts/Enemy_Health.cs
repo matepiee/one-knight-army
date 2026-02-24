@@ -20,6 +20,16 @@ public class Enemy_Health : MonoBehaviour
     private void Start()
     {
         currentHp = maxHp;
+
+        if (goldText == null)
+        {
+            GameObject findtext = GameObject.Find("AmountText");
+
+            if (findtext != null)
+            {
+                goldText = findtext.GetComponent<TextMeshProUGUI>();
+            }
+        }
         UpdateHealthBar();
     }
 
@@ -32,13 +42,12 @@ public class Enemy_Health : MonoBehaviour
         }
         else if (currentHp <=0)
         {
-            OnMonsterDefeated(expReward);
-            Destroy(gameObject);
+            OnMonsterDefeated?.Invoke(expReward);
 
             int currentGoldInWallet = int.Parse(goldText.text);
-
             goldText.text = (currentGoldInWallet + goldReward).ToString();
 
+            Destroy(gameObject);
         }
 
         UpdateHealthBar();
