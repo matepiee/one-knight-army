@@ -1,11 +1,18 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_Health : MonoBehaviour
 {
-    public int expReward = 30;
+    public int expReward;
+    public int goldReward;
+    public TMP_Text goldText;
 
     public delegate void MonsterDefeated(int exp);
+
     public static event MonsterDefeated OnMonsterDefeated;
+
+    [SerializeField] private Slider slider;
 
     public int currentHp;
     public int maxHp;
@@ -13,6 +20,7 @@ public class Enemy_Health : MonoBehaviour
     private void Start()
     {
         currentHp = maxHp;
+        UpdateHealthBar();
     }
 
     public void ChangeHealth(int amount)
@@ -27,6 +35,20 @@ public class Enemy_Health : MonoBehaviour
             OnMonsterDefeated(expReward);
             Destroy(gameObject);
 
+            int currentGoldInWallet = int.Parse(goldText.text);
+
+            goldText.text = (currentGoldInWallet + goldReward).ToString();
+
+        }
+
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        if (slider != null)
+        {
+            slider.value = (float)currentHp / maxHp;
         }
     }
 }
