@@ -15,14 +15,14 @@ public class StatsManager : MonoBehaviour
     public float knockbackTime;
     public float stunTime;
     public int armor;
-    public float goldGain;
+    public int goldgain;
 
     [Header("Movement Stats")]
     public float speed;
 
     [Header("Health Stats")]
-    public int currentHp;
-    public int maxHp;
+    public float currentHp;
+    public float maxHp;
 
     private void Awake()
     {
@@ -33,13 +33,13 @@ public class StatsManager : MonoBehaviour
         else { Destroy(gameObject); }
     }
 
-    public void UpdateMaxHealth(int amount)
+    public void UpdateMaxHealth(float amount)
     {
         maxHp += amount;
         healthText.text = "HP: " + currentHp + "/ " + maxHp;
     }
 
-    public void UpdateHealth(int amount)
+    public void UpdateHealth(float amount)
     {
         currentHp += amount;
 
@@ -61,14 +61,19 @@ public class StatsManager : MonoBehaviour
         speed += amount;
     }
 
+    public void UpdateMaxSpeed(float amount)
+    {
+        speed += amount;
+    }
+
     public void UpdateArmor(int amount)
     {
         armor += amount;
     }
-
-    public void UpdateGoldGain(float amount)
+    public void UpdateGoldGain(int amount)
     {
-        goldGain += amount;
+        goldgain += amount;
     }
+        
 
 }

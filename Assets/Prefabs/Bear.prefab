@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
-  speed: 3
+  speed: 2
   attackRange: 1
   attackCooldown: 2
   baseReachDistance: 0.5
@@ -219,12 +219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 40
-  goldReward: 70
+  expReward: 150
+  goldReward: 100
   goldText: {fileID: 0}
   slider: {fileID: 5719247120348373489}
-  currentHp: 150
-  maxHp: 150
+  currentHp: 300
+  maxHp: 300
 --- !u!114 &6644261313237290211
 MonoBehaviour:
   m_ObjectHideFlags: 0

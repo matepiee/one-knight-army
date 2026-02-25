@@ -438,7 +438,7 @@ MonoBehaviour:
   knockbackForce: 10
   stunTime: 0.5
   weaponRange: 1
-  damage: 30
+  damage: 45
 --- !u!114 &3876386514770937445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
-  speed: 4
+  speed: 2.2
   attackRange: 1
   attackCooldown: 2
   baseReachDistance: 0.5
@@ -530,12 +530,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 100
-  goldReward: 50
+  expReward: 350
+  goldReward: 250
   goldText: {fileID: 0}
   slider: {fileID: 7246477582275164128}
-  currentHp: 200
-  maxHp: 200
+  currentHp: 600
+  maxHp: 600
 --- !u!114 &831451376395162141
 MonoBehaviour:
   m_ObjectHideFlags: 0
