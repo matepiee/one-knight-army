@@ -31,25 +31,48 @@ public class Player_Combat : MonoBehaviour
 
     public void DealDamage()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, StatsManager.Instance.weaponRange, enemyLayer);
+        // 1. Megkeressük az ÖSSZES ellenséget a körön belül
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, StatsManager.Instance.weaponRange, enemyLayer);
 
-        if (enemies.Length > 0)
+        // 2. Végigmegyünk a listán egy ciklussal
+        foreach (Collider2D enemy in hitEnemies)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHealth(-StatsManager.Instance.damage);
-            enemies[0].GetComponent<Enemy_Knockback>().Knockback(transform, StatsManager.Instance.knockbackForce, StatsManager.Instance.knockbackTime, StatsManager.Instance.stunTime);
-        }
+            // Megpróbáljuk elkérni az élet scriptet
+            if (enemy.TryGetComponent(out Enemy_Health health))
+            {
+                // Sebzés kiosztása (AOE - mindenki megkapja!)
+                health.ChangeHealth((int)-StatsManager.Instance.damage);
 
+                // Ha van knockback, azt is mindenkin végrehajtjuk
+                if (enemy.TryGetComponent(out Enemy_Knockback kb))
+                {
+                    kb.Knockback(transform, StatsManager.Instance.knockbackForce, StatsManager.Instance.knockbackTime, StatsManager.Instance.stunTime);
+                }
+            }
+        }
     }
     public void FinishAttacking()
     {
         anim.SetBool("IsAttacking", false);
     }
 
-    /*
+
     private void OnDrawGizmosSelected()
     {
+        if (attackPoint == null) return;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, StatsManager.Instance.weaponRange);
+
+        // Megpróbáljuk megkeresni a jelenetben lévõ StatsManagert
+        StatsManager stats = Object.FindFirstObjectByType<StatsManager>();
+
+        if (stats != null)
+        {
+            Gizmos.DrawWireSphere(attackPoint.position, stats.weaponRange);
+        }
+        else
+        {
+            Gizmos.DrawWireSphere(attackPoint.position, 1f); // Alapértelmezett
+        }
     }
-    */
+
 }
