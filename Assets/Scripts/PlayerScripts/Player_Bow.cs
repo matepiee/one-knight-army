@@ -4,8 +4,6 @@ public class Player_Bow : MonoBehaviour
 {
     public Transform launchPoint;
     public GameObject arrowPrefab;
-    public float shootCooldown = .5f;
-    public float shootTimer;
 
     public Player_Movement playerMovement;
 
@@ -15,11 +13,11 @@ public class Player_Bow : MonoBehaviour
     
     void Update()
     {
-        shootTimer -=Time.deltaTime;
+        StatsManager.Instance.shootTimer -=Time.deltaTime;
 
         HandleAiming();
 
-        if (Input.GetButtonDown("Shoot") && shootTimer <=0)
+        if (Input.GetButtonDown("Shoot") && StatsManager.Instance.shootTimer <=0)
         {
             playerMovement.isShooting= true;
             anim.SetBool("IsShooting", true);
@@ -56,11 +54,11 @@ public class Player_Bow : MonoBehaviour
 
     public void Shoot()
     { 
-        if (shootTimer<=0)
+        if (StatsManager.Instance.shootTimer <=0)
         {
             Arrow arrow = Instantiate(arrowPrefab, launchPoint.position, Quaternion.identity).GetComponent<Arrow>();
             arrow.direction = aimDirection;
-            shootTimer = shootCooldown;
+            StatsManager.Instance.shootTimer = StatsManager.Instance.shootCooldown;
         }
         
         anim.SetBool("IsShooting", false);
