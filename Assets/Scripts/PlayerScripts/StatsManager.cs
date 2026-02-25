@@ -24,6 +24,10 @@ public class StatsManager : MonoBehaviour
     public int currentHp;
     public int maxHp;
 
+    [Header("Bow Stats")]
+    public float shootCooldown = .5f;
+    public float shootTimer;
+
     private void Awake()
     {
         if (Instance == null)
