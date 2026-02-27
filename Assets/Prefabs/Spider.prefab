@@ -304,9 +304,9 @@ GameObject:
   - component: {fileID: 7980534992835782253}
   - component: {fileID: 5795288447414689664}
   - component: {fileID: 3876386514770937445}
+  - component: {fileID: 4895560554359494858}
   - component: {fileID: 8204779513607034139}
   - component: {fileID: 6401611450144409763}
-  - component: {fileID: 4895560554359494858}
   - component: {fileID: 831451376395162141}
   m_Layer: 9
   m_Name: Spider
@@ -475,7 +475,7 @@ MonoBehaviour:
   knockbackForce: 10
   stunTime: 0.5
   weaponRange: 1
-  damage: 50
+  damage: 20
 --- !u!114 &3876386514770937445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,12 +491,30 @@ MonoBehaviour:
   playerDetectRange: 6
   speed: 5
   attackRange: 1
-  attackCooldown: 2
+  attackCooldown: 1
   baseReachDistance: 0.5
   detectionPoint: {fileID: 4442102885976901178}
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &4895560554359494858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286251563601075931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
+  expReward: 35
+  goldReward: 20
+  goldText: {fileID: 0}
+  slider: {fileID: 7246477582275164128}
+  currentHp: 60
+  maxHp: 60
 --- !u!58 &8204779513607034139
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -555,24 +573,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4895560554359494858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286251563601075931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 50
-  goldReward: 50
-  goldText: {fileID: 0}
-  slider: {fileID: 7246477582275164128}
-  currentHp: 60
-  maxHp: 60
 --- !u!114 &831451376395162141
 MonoBehaviour:
   m_ObjectHideFlags: 0

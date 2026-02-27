@@ -289,7 +289,7 @@ MonoBehaviour:
   knockbackForce: 10
   stunTime: 0.5
   weaponRange: 1
-  damage: 10
+  damage: 5
 --- !u!114 &1208620365344303077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,9 +303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
-  speed: 5
+  speed: 3
   attackRange: 1
-  attackCooldown: 2
+  attackCooldown: 1.8
   baseReachDistance: 0.5
   detectionPoint: {fileID: 6778098700617303017}
   playerLayer:
@@ -382,11 +382,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
   expReward: 10
-  goldReward: 3
+  goldReward: 5
   goldText: {fileID: 0}
   slider: {fileID: 2037561545098950151}
-  currentHp: 50
-  maxHp: 50
+  currentHp: 20
+  maxHp: 20
 --- !u!114 &2928247619250550179
 MonoBehaviour:
   m_ObjectHideFlags: 0
