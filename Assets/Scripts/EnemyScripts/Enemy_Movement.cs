@@ -17,6 +17,11 @@ public class Enemy_Movement : MonoBehaviour
     public float attackCooldown = 2;
     public float baseReachDistance = 0.5f;
 
+    [Header("Separation (Soft Collision)")]
+    public float separationRadius = 1f; // Milyen távolságból kezdjék el tolni egymást
+    public float separationForce = 40f;   // Milyen erõvel toljanak
+    public LayerMask enemyLayer;    // Ide az Enemy layert állítsd be az Inspectorban!
+
     [Header("References")]
     public Transform detectionPoint;
     public LayerMask playerLayer;
@@ -69,6 +74,31 @@ public class Enemy_Movement : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        ApplySeparationForce();
+    }
+
+    void ApplySeparationForce()
+    {
+        // Megkeressük a többi ellenséget a közelben
+        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, separationRadius, enemyLayer);
+
+        foreach (Collider2D enemy in nearbyEnemies)
+        {
+            if (enemy.gameObject != gameObject) // Saját magunkat nem toljuk el
+            {
+                // Kiszámoljuk az irányt, amivel eltoljuk magunktól a másikat
+                Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
+
+                // Minél közelebb vannak, annál nagyobb az erõ (opcionális finomítás)
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                float forceStrength = (1f - (distance / separationRadius)) * separationForce;
+
+                rb.AddForce(pushDirection * forceStrength);
+            }
+        }
+    }
     void Move(Transform target)
     {
         if (target == null) return;
@@ -166,6 +196,9 @@ public class Enemy_Movement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectionPoint.position, playerDetectRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, separationRadius);
     }
 }
 

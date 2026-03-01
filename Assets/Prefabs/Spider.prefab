@@ -493,6 +493,11 @@ MonoBehaviour:
   attackRange: 1
   attackCooldown: 1
   baseReachDistance: 0.5
+  separationRadius: 0.6
+  separationForce: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
   detectionPoint: {fileID: 4442102885976901178}
   playerLayer:
     serializedVersion: 2

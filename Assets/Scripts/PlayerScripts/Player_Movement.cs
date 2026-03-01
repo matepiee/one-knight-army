@@ -31,11 +31,16 @@ public class Player_Movement : MonoBehaviour
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
+            bool currentlyAttacking = anim.GetBool("IsAttacking");
 
-            if (horizontal > 0 && transform.localScale.x < 0 || horizontal < 0 && transform.localScale.x > 0)
+            if (!currentlyAttacking)
             {
-                Flip();
+                if (horizontal > 0 && transform.localScale.x < 0 || horizontal < 0 && transform.localScale.x > 0)
+                {
+                    Flip();
+                }
             }
+            
 
             anim.SetFloat("horizontal", Mathf.Abs(horizontal));
             anim.SetFloat("vertical", Mathf.Abs(vertical));

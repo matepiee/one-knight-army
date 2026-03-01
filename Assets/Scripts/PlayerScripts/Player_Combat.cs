@@ -6,6 +6,7 @@ public class Player_Combat : MonoBehaviour
     public Transform attackPoint;
     public Animator anim;
     public float cooldown = 1;
+    public Rigidbody2D rb;
     private float timer;
  
 
@@ -23,7 +24,7 @@ public class Player_Combat : MonoBehaviour
         if (timer <= 0)
         {
             anim.SetBool("IsAttacking", true);
-
+            rb.constraints = rb.constraints | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
             timer = cooldown;
         }
@@ -54,6 +55,7 @@ public class Player_Combat : MonoBehaviour
     public void FinishAttacking()
     {
         anim.SetBool("IsAttacking", false);
+        rb.constraints = rb.constraints & ~RigidbodyConstraints2D.FreezePositionX & ~RigidbodyConstraints2D.FreezePositionY;
     }
 
 
