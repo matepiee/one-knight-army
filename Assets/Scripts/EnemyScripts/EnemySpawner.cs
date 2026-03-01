@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Referenciák")]
     public Button StartButton;
+    public Transform enemyParent;
 
     private float timer;
     private int currentEnemyIndex;
@@ -77,7 +78,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (currentEnemyIndex < currentWave.enemies.Length)
         {
-            GameObject newEnemy = Instantiate(currentWave.enemies[currentEnemyIndex], transform.position, Quaternion.identity);
+            GameObject newEnemy = Instantiate(currentWave.enemies[currentEnemyIndex], transform.position, Quaternion.identity, enemyParent);
             activeEnemies.Add(newEnemy);
 
             currentEnemyIndex++;
