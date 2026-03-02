@@ -40,12 +40,16 @@ public class Enemy_Health : MonoBehaviour
         {
             currentHp = maxHp;
         }
-        else if (currentHp <=0)
+        else if (currentHp <= 0)
         {
             OnMonsterDefeated?.Invoke(expReward);
 
-            int currentGoldInWallet = int.Parse(goldText.text);
-            goldText.text = (currentGoldInWallet + goldReward).ToString();
+            InventoryManager inv = FindFirstObjectByType<InventoryManager>();
+            if (inv != null)
+            {
+                inv.gold += goldReward;
+                inv.goldText.text = inv.gold.ToString();
+            }
 
             Destroy(gameObject);
         }

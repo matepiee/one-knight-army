@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 148e1ab80b2b14ce5858df57aeae24e0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 352566
+  packageName: Tiny Swords
+  packageVersion: 1.0
+  assetPath: Assets/Tiny Swords/UI Elements/Cursors/Cursor_04.png
+  uploadId: 844324
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -33,7 +40,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -66,7 +73,7 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 8
+  textureType: 7
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -221,10 +228,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 352566
-  packageName: Tiny Swords
-  packageVersion: 1.0
-  assetPath: Assets/Tiny Swords/UI Elements/Cursors/Cursor_04.png
-  uploadId: 844324
