@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class Enemy_Movement : MonoBehaviour
 {
@@ -18,9 +18,9 @@ public class Enemy_Movement : MonoBehaviour
     public float baseReachDistance = 0.5f;
 
     [Header("Separation (Soft Collision)")]
-    public float separationRadius = 1f; // Milyen távolságból kezdjék el tolni egymást
-    public float separationForce = 40f;   // Milyen erõvel toljanak
-    public LayerMask enemyLayer;    // Ide az Enemy layert állítsd be az Inspectorban!
+    public float separationRadius = 1f; // Milyen tÃ¡volsÃ¡gbÃ³l kezdjÃ©k el tolni egymÃ¡st
+    public float separationForce = 40f;   // Milyen erÅ‘vel toljanak
+    public LayerMask enemyLayer;
 
     [Header("References")]
     public Transform detectionPoint;
@@ -81,17 +81,14 @@ public class Enemy_Movement : MonoBehaviour
 
     void ApplySeparationForce()
     {
-        // Megkeressük a többi ellenséget a közelben
         Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, separationRadius, enemyLayer);
 
         foreach (Collider2D enemy in nearbyEnemies)
         {
-            if (enemy.gameObject != gameObject) // Saját magunkat nem toljuk el
+            if (enemy.gameObject != gameObject)
             {
-                // Kiszámoljuk az irányt, amivel eltoljuk magunktól a másikat
                 Vector2 pushDirection = (transform.position - enemy.transform.position).normalized;
 
-                // Minél közelebb vannak, annál nagyobb az erõ (opcionális finomítás)
                 float distance = Vector2.Distance(transform.position, enemy.transform.position);
                 float forceStrength = (1f - (distance / separationRadius)) * separationForce;
 

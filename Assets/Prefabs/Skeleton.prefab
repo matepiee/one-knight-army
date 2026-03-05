@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
   speed: 3
-  attackRange: 1
+  attackRange: 1.4
   attackCooldown: 1.8
   baseReachDistance: 0.5
   separationRadius: 0.6
