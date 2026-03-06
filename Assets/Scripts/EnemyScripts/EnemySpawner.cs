@@ -1,30 +1,41 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-// Ez az osztály tárolja egyetlen hullám adatait
 [System.Serializable]
 public class Wave
 {
-    public string waveName;          // A hullám neve (pl. "1. Hullám")
-    public GameObject[] enemies;     // Az ebben a hullámban jövõ szörnyek
-    public float spawnRate = 2f;     // Milyen gyorsan jöjjenek a szörnyek ebben a hullámban
+    public string waveName;
+    public GameObject[] enemies;
+    public float spawnRate = 2f;
 }
-
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Hullámok Beállítása")]
-    public Wave[] waves;             // Itt tudod megadni a hullámokat az Inspectorban
-    private int currentWaveIndex = 0; // Hányadik hullámnál tartunk
+    [Header("Waves")]
+    public Wave[] waves;
+    private int currentWaveIndex = 0;
 
-    [Header("Referenciák")]
+    [Header("References")]
     public Button StartButton;
     public Transform enemyParent;
+    //WaveCounterCanvas
+    public Canvas WaveCounterCanvas;
+    public TMP_Text WaveCounterText;
+    //WinCanvas
+    public GameObject WinCanvas;
+    public CanvasGroup WinCanvasGroup;
+    //EnemyCounterCanvas
+    public GameObject EnemyCounterCanvas;
+    public CanvasGroup EnemyCounterCanvasGroup;
+    public TMP_Text EnemyCounterText;
 
     private float timer;
     private int currentEnemyIndex;
     private bool isWaveActive = false;
     private List<GameObject> activeEnemies = new List<GameObject>();
+    private bool winShown = false;
 
     void Start()
     {
@@ -44,10 +55,23 @@ public class EnemySpawner : MonoBehaviour
             {
                 StartButton.gameObject.SetActive(true);
                 StartButton.interactable = true;
+                WaveCounterText.text = "Preperation";
+            }
+            else if (currentWaveIndex >= waves.Length && !winShown)
+            {
+                winShown = true;
+
+                StartButton.gameObject.SetActive(false);
+
+                WinCanvas.SetActive(true);
+                WinCanvasGroup.alpha = 1;
+                WinCanvasGroup.blocksRaycasts = true;
+                WinCanvasGroup.interactable = true;
             }
         }
         else
         {
+            EnemyCounterText.text = waves[currentWaveIndex].enemies.Length + "/" + activeEnemies.Count.ToString();
             StartButton.gameObject.SetActive(false);
         }
 
@@ -67,13 +91,13 @@ public class EnemySpawner : MonoBehaviour
         currentEnemyIndex = 0;
         timer = 0;
         isWaveActive = true;
+        WaveCounterText.text = waves[currentWaveIndex].waveName;
 
         Debug.Log(waves[currentWaveIndex].waveName + " elindítva!");
     }
 
     void SpawnEnemy()
     {
-        // Az aktuális hullám adatait használjuk
         Wave currentWave = waves[currentWaveIndex];
 
         if (currentEnemyIndex < currentWave.enemies.Length)
@@ -89,7 +113,7 @@ public class EnemySpawner : MonoBehaviour
         if (currentEnemyIndex >= currentWave.enemies.Length)
         {
             isWaveActive = false;
-            currentWaveIndex++; // Felkészülünk a következõ hullámra
+            currentWaveIndex++;
             Debug.Log("A hullám összes szörnye spawnolt.");
         }
     }

@@ -34,13 +34,10 @@ public class Player_Movement : MonoBehaviour
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
 
-            // Ez a változó mondja meg, hogy épp zajlik-e az ütés
             bool currentlyAttacking = anim.GetBool("IsAttacking");
 
-            // MOZGÁS: Csak akkor mozoghat és fordulhat, ha NEM üt éppen
             if (!currentlyAttacking)
             {
-                // Fordulás tiltása ütés közben
                 if (horizontal > 0 && transform.localScale.x < 0 || horizontal < 0 && transform.localScale.x > 0)
                 {
                     Flip();
@@ -49,7 +46,6 @@ public class Player_Movement : MonoBehaviour
                 Vector2 movement = new Vector2(horizontal, vertical).normalized;
                 rb.linearVelocity = movement * StatsManager.Instance.speed;
 
-                // ATTACK POINT FRISSÍTÉSE: Csak ha nem ütünk, akkor válthat irányt
                 if (movement != Vector2.zero)
                 {
                     Vector2 newPos = movement * attackOffset;
@@ -62,7 +58,6 @@ public class Player_Movement : MonoBehaviour
             }
             else
             {
-                // Ha ütünk, ne mozogjunk (opcionális, de stabilabb)
                 rb.linearVelocity = Vector2.zero;
             }
 
@@ -82,6 +77,17 @@ public class Player_Movement : MonoBehaviour
         Vector2 direction = (transform.position - enemy.position).normalized;
         rb.linearVelocity = direction * force;
         StartCoroutine(KnockbackCounter(stunTime));
+    }
+
+    public void ResetMovement()
+    {
+        isKnockedBack = false;
+        isShooting = false;
+        rb.linearVelocity = Vector2.zero;
+
+        anim.SetFloat("horizontal", 0);
+        anim.SetFloat("vertical", 0);
+        anim.SetBool("IsAttacking", false);
     }
 
 

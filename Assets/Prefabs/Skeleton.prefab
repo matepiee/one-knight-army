@@ -118,7 +118,6 @@ GameObject:
   - component: {fileID: 4470095395003922243}
   - component: {fileID: 2699633336694111411}
   - component: {fileID: 1208620365344303077}
-  - component: {fileID: 431655587657738640}
   - component: {fileID: 8093604996678982268}
   - component: {fileID: 3645473840853010063}
   - component: {fileID: 2928247619250550179}
@@ -194,7 +193,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 95
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6471116574714101982, guid: 0807e1c079fbc48eaa6d094e7ef359f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -286,8 +285,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  knockbackForce: 10
-  stunTime: 0.5
+  knockbackForce: 1.5
+  stunTime: 0.2
   weaponRange: 1
   damage: 5
 --- !u!114 &1208620365344303077
@@ -305,7 +304,7 @@ MonoBehaviour:
   playerDetectRange: 6
   speed: 3
   attackRange: 1.4
-  attackCooldown: 1.8
+  attackCooldown: 1
   baseReachDistance: 0.5
   separationRadius: 0.6
   separationForce: 20
@@ -316,42 +315,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!58 &431655587657738640
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292515491538580860}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.13922834, y: 0}
-  m_Radius: 5.411048
 --- !u!95 &8093604996678982268
 Animator:
   serializedVersion: 7
@@ -386,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 10
+  expReward: 5
   goldReward: 5
   goldText: {fileID: 0}
   slider: {fileID: 2037561545098950151}

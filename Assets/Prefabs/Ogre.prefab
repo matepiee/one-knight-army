@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.6, y: -0.7}
-  m_SizeDelta: {x: 100, y: 20}
+  m_SizeDelta: {x: 150, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7246477582275164128
 MonoBehaviour:
@@ -193,7 +193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.86}
+  m_AnchoredPosition: {x: 0, y: 1.83}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6868921488097284604
@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 7282113511687836299}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.06, y: -0.52, z: 0}
+  m_LocalPosition: {x: 1.33, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,6 @@ GameObject:
   - component: {fileID: 7980534992835782253}
   - component: {fileID: 5795288447414689664}
   - component: {fileID: 3876386514770937445}
-  - component: {fileID: 8204779513607034139}
   - component: {fileID: 6401611450144409763}
   - component: {fileID: 4895560554359494858}
   - component: {fileID: 831451376395162141}
@@ -380,7 +379,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 101
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6950911746183540349, guid: eb695fa12294d4db9a8b235b90742268, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -404,7 +403,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -453,8 +452,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.090233564, y: 0.027599812}
-  m_Size: {x: 0.70416117, y: 1.116255}
+  m_Offset: {x: -0.048607647, y: -0.27229747}
+  m_Size: {x: 1.8259982, y: 1.8259982}
   m_Direction: 0
 --- !u!114 &5795288447414689664
 MonoBehaviour:
@@ -472,9 +471,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  knockbackForce: 10
+  knockbackForce: 3.5
   stunTime: 0.5
-  weaponRange: 1
+  weaponRange: 1.6
   damage: 70
 --- !u!114 &3876386514770937445
 MonoBehaviour:
@@ -490,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
   speed: 2
-  attackRange: 1
+  attackRange: 1.6
   attackCooldown: 3
   baseReachDistance: 0.5
   separationRadius: 0.6
@@ -502,42 +501,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!58 &8204779513607034139
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286251563601075931}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.13922834, y: 0}
-  m_Radius: 5.411048
 --- !u!95 &6401611450144409763
 Animator:
   serializedVersion: 7
@@ -623,7 +586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0.9900017, y: 0}
+  m_AnchoredPosition: {x: 0.9900055, y: 0}
   m_SizeDelta: {x: -19.14, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8119096155353127587

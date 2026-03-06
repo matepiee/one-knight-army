@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class Enemy_Combat : MonoBehaviour
 {
@@ -16,10 +15,22 @@ public class Enemy_Combat : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            StatsManager playerStats = hits[0].GetComponent<StatsManager>();
+            GameObject player = hits[0].gameObject;
 
-            hits[0].GetComponent<Player_Health>().ChangeHealth(-damage);
-            hits[0].GetComponent<Player_Movement>().Knockback(transform, knockbackForce, stunTime);
+            if (player.activeInHierarchy)
+            {
+                Player_Movement movement = player.GetComponent<Player_Movement>();
+                if (movement != null)
+                {
+                    movement.Knockback(transform, knockbackForce, stunTime);
+                }
+
+                Player_Health health = player.GetComponent<Player_Health>();
+                if (health != null)
+                {
+                    health.ChangeHealth(-damage);
+                }
+            }
         }
     }
 

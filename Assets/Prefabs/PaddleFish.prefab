@@ -119,7 +119,6 @@ GameObject:
   - component: {fileID: 2699633336694111411}
   - component: {fileID: 1208620365344303077}
   - component: {fileID: 3645473840853010063}
-  - component: {fileID: 431655587657738640}
   - component: {fileID: 8093604996678982268}
   - component: {fileID: 2928247619250550179}
   m_Layer: 9
@@ -194,7 +193,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 96
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7581072064079349556, guid: bf2f1478bf328471bb80074c739c6489, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -267,8 +266,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.090233564, y: 0.027599812}
-  m_Size: {x: 0.70416117, y: 1.116255}
+  m_Offset: {x: -0.046107292, y: 0.0031283498}
+  m_Size: {x: 0.6552181, y: 0.9134916}
   m_Direction: 0
 --- !u!114 &2699633336694111411
 MonoBehaviour:
@@ -286,9 +285,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  knockbackForce: 10
-  stunTime: 0.5
-  weaponRange: 1
+  knockbackForce: 2
+  stunTime: 0.2
+  weaponRange: 1.1
   damage: 8
 --- !u!114 &1208620365344303077
 MonoBehaviour:
@@ -304,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
   speed: 3.5
-  attackRange: 1
+  attackRange: 1.1
   attackCooldown: 1.3
   baseReachDistance: 0.5
   separationRadius: 0.6
@@ -328,48 +327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 25
+  expReward: 13
   goldReward: 5
   goldText: {fileID: 0}
   slider: {fileID: 2037561545098950151}
   currentHp: 35
   maxHp: 35
---- !u!58 &431655587657738640
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2292515491538580860}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.13922834, y: 0}
-  m_Radius: 5.411048
 --- !u!95 &8093604996678982268
 Animator:
   serializedVersion: 7
