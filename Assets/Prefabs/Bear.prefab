@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2718744784612818206}
   - component: {fileID: 1679059021377758067}
   - component: {fileID: 6644261313237290211}
-  - component: {fileID: 6118291349334180101}
   - component: {fileID: 1795584153653027756}
   m_Layer: 9
   m_Name: Bear
@@ -90,7 +89,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 98
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6337399714680752440, guid: c8d21176f9dad476a9d6fa043beeb3ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -163,9 +162,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.090233564, y: 0.027599812}
-  m_Size: {x: 0.70416117, y: 1.116255}
-  m_Direction: 0
+  m_Offset: {x: -0.08360482, y: 0.0062513757}
+  m_Size: {x: 1.3297473, y: 0.98817176}
+  m_Direction: 1
 --- !u!114 &8739796997102407890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,9 +181,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  knockbackForce: 15
-  stunTime: 0.5
-  weaponRange: 1
+  knockbackForce: 3
+  stunTime: 0.2
+  weaponRange: 1.2
   damage: 30
 --- !u!114 &2718744784612818206
 MonoBehaviour:
@@ -200,8 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
   speed: 2.5
-  attackRange: 1
-  attackCooldown: 2
+  attackRange: 1.2
+  attackCooldown: 1
   baseReachDistance: 0.5
   separationRadius: 0.6
   separationForce: 20
@@ -224,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 150
+  expReward: 100
   goldReward: 100
   goldText: {fileID: 0}
   slider: {fileID: 5719247120348373489}
@@ -242,42 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ca5989fa03e1948926daddd7b9d3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Knockback
---- !u!58 &6118291349334180101
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628893137378558753}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.13922834, y: 0}
-  m_Radius: 5.411048
 --- !u!95 &1795584153653027756
 Animator:
   serializedVersion: 7

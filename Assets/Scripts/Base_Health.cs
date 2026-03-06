@@ -12,6 +12,9 @@ public class Base_Health : MonoBehaviour
     public GameObject GameOverCanvas;
     public CanvasGroup GameOverCanvasGroup;
 
+    public GameObject dieCanvas;
+    public CanvasGroup dieCanvasGroup;
+
     void Start()
     {
         currentHp = maxHp;
@@ -42,10 +45,17 @@ public class Base_Health : MonoBehaviour
 
     void GameOver()
     {
+        dieCanvas.SetActive(false);
+        dieCanvasGroup.alpha = 0;
+
         GameOverCanvas.SetActive(true);
         GameOverCanvasGroup.alpha = 1;
         GameOverCanvasGroup.blocksRaycasts = true;
         GameOverCanvasGroup.interactable = true;
+
         Time.timeScale = 0;
+
+        
+
     }
 }
