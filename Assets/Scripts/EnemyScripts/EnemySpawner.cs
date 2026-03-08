@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -47,17 +47,22 @@ public class EnemySpawner : MonoBehaviour
     {
         activeEnemies.RemoveAll(enemy => enemy == null);
 
-        // Gomb kezelése: Csak ha nincs aktív hullám és nincs élõ ellenség
         if (!isWaveActive && activeEnemies.Count == 0)
         {
-            // Ha elfogytak a hullámok, ne jelenjen meg többé a gomb
-            if (currentWaveIndex < waves.Length)
+            if (currentWaveIndex < waves.Length && currentEnemyIndex >= waves[currentWaveIndex].enemies.Length)
+            {
+                currentWaveIndex++;
+                currentEnemyIndex = 0;
+            }
+
+            if (currentWaveIndex < waves.Length)//Prep
             {
                 StartButton.gameObject.SetActive(true);
                 StartButton.interactable = true;
                 WaveCounterText.text = "Preperation";
+                EnemyCounterCanvasGroup.alpha = 0;
             }
-            else if (currentWaveIndex >= waves.Length && !winShown)
+            else if (currentWaveIndex >= waves.Length && !winShown) //Win
             {
                 winShown = true;
 
@@ -69,8 +74,9 @@ public class EnemySpawner : MonoBehaviour
                 WinCanvasGroup.interactable = true;
             }
         }
-        else
+        else // Fight
         {
+            EnemyCounterCanvasGroup.alpha = 1;
             EnemyCounterText.text = waves[currentWaveIndex].enemies.Length + "/" + activeEnemies.Count.ToString();
             StartButton.gameObject.SetActive(false);
         }
@@ -93,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
         isWaveActive = true;
         WaveCounterText.text = waves[currentWaveIndex].waveName;
 
-        Debug.Log(waves[currentWaveIndex].waveName + " elindítva!");
+        Debug.Log(waves[currentWaveIndex].waveName + " elindÃ­tva!");
     }
 
     void SpawnEnemy()
@@ -109,12 +115,11 @@ public class EnemySpawner : MonoBehaviour
             timer = currentWave.spawnRate;
         }
 
-        // Ha az összes ellenség kijött az ADOTT hullámból
+        // Ha az Ã¶sszes ellensÃ©g kijÃ¶tt az ADOTT hullÃ¡mbÃ³l
         if (currentEnemyIndex >= currentWave.enemies.Length)
         {
             isWaveActive = false;
-            currentWaveIndex++;
-            Debug.Log("A hullám összes szörnye spawnolt.");
+            Debug.Log("A hullÃ¡m Ã¶sszes szÃ¶rnye spawnolt.");
         }
     }
 }

@@ -229,6 +229,8 @@ MonoBehaviour:
   priceText: {fileID: 6621398630420958858}
   itemImage: {fileID: 504677298246086474}
   shopManager: {fileID: 0}
+  shopInfo: {fileID: 0}
+  price: 0
 --- !u!1 &2388953387610641984
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +608,7 @@ RectTransform:
   m_GameObject: {fileID: 7531651671686430522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 540526959160478049}

@@ -193,7 +193,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 96
+  m_SortingOrder: 7
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7581072064079349556, guid: bf2f1478bf328471bb80074c739c6489, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -331,6 +331,7 @@ MonoBehaviour:
   goldReward: 5
   goldText: {fileID: 0}
   slider: {fileID: 2037561545098950151}
+  deathParticle: {fileID: 8320477767361073290, guid: 6fbbed7cbdfff484c8049293736fd285, type: 3}
   currentHp: 35
   maxHp: 35
 --- !u!95 &8093604996678982268

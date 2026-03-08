@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +13,8 @@ public class Enemy_Health : MonoBehaviour
     public static event MonsterDefeated OnMonsterDefeated;
 
     [SerializeField] private Slider slider;
+    [Header("Effects")]
+    public GameObject deathParticle;
 
     public int currentHp;
     public int maxHp;
@@ -51,6 +53,11 @@ public class Enemy_Health : MonoBehaviour
                 inv.goldText.text = inv.gold.ToString();
             }
 
+            if (deathParticle != null)
+            {
+                Instantiate(deathParticle, transform.position, Quaternion.identity);
+            }
+
             Destroy(gameObject);
         }
 
@@ -62,6 +69,17 @@ public class Enemy_Health : MonoBehaviour
         if (slider != null)
         {
             slider.value = (float)currentHp / maxHp;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        // Keeps the healthbar from flipping when the enemy turns around
+        if (slider != null)
+        {
+            Vector3 scale = slider.transform.localScale;
+            scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            slider.transform.localScale = scale;
         }
     }
 }

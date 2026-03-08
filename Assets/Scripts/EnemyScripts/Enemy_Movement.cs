@@ -9,6 +9,7 @@ public class Enemy_Movement : MonoBehaviour
     private Animator anim;
     private EnemyState enemyState;
     private float attackCooldownTimer;
+    private bool isAttackingBase = false;
 
     [Header("Options")]
     public float playerDetectRange = 5;
@@ -42,32 +43,34 @@ public class Enemy_Movement : MonoBehaviour
 
     void Update()
     {
-        if (enemyState != EnemyState.Knockback)
+        if (enemyState == EnemyState.Knockback || isAttackingBase) return;
+
+        // Ha éppen rácsap valamire (Playerre), ne csináljon semmi mást
+        if (enemyState == EnemyState.Attacking)
         {
-            CheckForPlayer();
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
 
-            if (attackCooldownTimer > 0)
-            {
-                attackCooldownTimer -= Time.deltaTime;
-            }
+        CheckForPlayer();
 
-            if (enemyState == EnemyState.Chasing)
+        if (attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
+        }
+
+        if (enemyState == EnemyState.Chasing)
+        {
+            Move(player);
+        }
+        else if (enemyState == EnemyState.Idle)
+        {
+            if (baseTarget != null)
             {
-                Move(player);
+                Move(baseTarget);
+                CheckBaseArrival();
             }
-            else if (enemyState == EnemyState.Idle)
-            {
-                if (baseTarget != null)
-                {
-                    Move(baseTarget);
-                    CheckBaseArrival();
-                }
-                else
-                {
-                    rb.linearVelocity = Vector2.zero;
-                }
-            }
-            else if (enemyState == EnemyState.Attacking)
+            else
             {
                 rb.linearVelocity = Vector2.zero;
             }
@@ -76,6 +79,9 @@ public class Enemy_Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Ne tolja el a többi szörny, ha épp támad vagy fellökve van
+        if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Knockback || isAttackingBase) return;
+
         ApplySeparationForce();
     }
 
@@ -113,19 +119,37 @@ public class Enemy_Movement : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, baseTarget.position) <= baseReachDistance)
         {
-            AttackBase();
+            
+            StartCoroutine(AttackBaseCoroutine());
         }
     }
 
-    void AttackBase()
+    System.Collections.IEnumerator AttackBaseCoroutine()
     {
-        Base_Health baseHealth = baseTarget.GetComponent<Base_Health>();
+        isAttackingBase = true;
 
+        // 1. Átváltunk támadó nézetre (megáll a figura, lejátssza az animációt)
+        ChangeState(EnemyState.Attacking);
+        rb.linearVelocity = Vector2.zero;
+        
+        // 2. Várunk egy kicsit (pl. 0.5 vagy 1 másodperc), ami alatt "lecsap" a kardjával/kezével
+        yield return new WaitForSeconds(0.6f); 
+        
+        // 3. Sebzés bevitele
+        Base_Health baseHealth = baseTarget.GetComponent<Base_Health>();
         if (baseHealth != null)
         {
             baseHealth.TakeDamage(1);
         }
 
+        // --- POR EFFEKT LÉTREHOZÁSA ELTŰNÉS ELŐTT ---
+        Enemy_Health enemyHealth = GetComponent<Enemy_Health>();
+        if (enemyHealth != null && enemyHealth.deathParticle != null)
+        {
+            Instantiate(enemyHealth.deathParticle, transform.position, Quaternion.identity);
+        }
+        
+        // 4. Eltűnik
         Destroy(gameObject);
     }
 

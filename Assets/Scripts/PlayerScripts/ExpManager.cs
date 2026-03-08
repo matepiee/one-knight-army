@@ -24,7 +24,7 @@ public class ExpManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            GainExperience(20);
+            GainExperience(2000);
         }
     }
 
