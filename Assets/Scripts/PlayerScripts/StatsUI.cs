@@ -48,7 +48,7 @@ public class StatsUI : MonoBehaviour
     }
     public void UpdateAgility()
     {
-        statsSlots[1].GetComponentInChildren<TMP_Text>().text = "Agility: " + StatsManager.Instance.speed;
+        statsSlots[1].GetComponentInChildren<TMP_Text>().text = "Agility: " + StatsManager.Instance.speed.ToString("0.##");
     }
     public void UpdateVitality()
     {

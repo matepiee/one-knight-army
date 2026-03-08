@@ -26,7 +26,7 @@ public class SkillManager : MonoBehaviour
                 StatsManager.Instance.UpdateAttackDamage(5);
                 break;
            case "Speed Boost":
-                StatsManager.Instance.UpdateSpeed(1);
+                StatsManager.Instance.UpdateSpeed(0.2f);
                 break;
             case "Armor Boost":
                 StatsManager.Instance.UpdateArmor(5);

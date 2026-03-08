@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
@@ -8,6 +8,8 @@ public class Player_Health : MonoBehaviour
     public TMP_Text healthText;
     public Animator healthTextAnim;
     public float respawnDelay = 3f;
+    [Header("Effects")]
+    public GameObject deathParticle;
 
     private Player_Movement moveScript;
     private SpriteRenderer spriteRenderer;
@@ -37,6 +39,11 @@ public class Player_Health : MonoBehaviour
 
         if (StatsManager.Instance.currentHp <= 0)
         {
+            if (deathParticle != null)
+            {
+                Instantiate(deathParticle, transform.position, Quaternion.identity);
+            }
+
             Vector3 spawnPoint = new Vector3(0f, 25f, 0f);
             RespawnManager.Instance.RespawnPlayer(gameObject, 3f, spawnPoint);
         }
@@ -50,7 +57,7 @@ public class Player_Health : MonoBehaviour
 
     IEnumerator RespawnRoutine()
     {
-        // --- HALÁL FÁZIS ---
+        // --- HALÃL FÃZIS ---
         moveScript.enabled = false;
         rb.linearVelocity = Vector2.zero;
         spriteRenderer.enabled = false;
@@ -58,7 +65,7 @@ public class Player_Health : MonoBehaviour
         transform.position = new Vector3(0f, 28f, 0f);
         yield return new WaitForSeconds(respawnDelay);
 
-        // --- ÚJJÁÉLEDÉS FÁZIS ---
+        // --- ÃšJJÃÃ‰LEDÃ‰S FÃZIS ---
         StatsManager.Instance.currentHp = StatsManager.Instance.maxHp;
         UpdateUI();
         spriteRenderer.enabled = true;

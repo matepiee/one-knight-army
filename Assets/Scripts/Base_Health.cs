@@ -39,7 +39,7 @@ public class Base_Health : MonoBehaviour
     {
         if (baseHpText != null)
         {
-            baseHpText.text = "HP: " + currentHp + " / " + maxHp;
+            baseHpText.text = "BASE HP: " + currentHp + " / " + maxHp;
         }
     }
 
