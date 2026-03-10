@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
+    public Player_ChangeEquipment bow;
 
     private void OnEnable()
     {
@@ -28,13 +29,17 @@ public class SkillManager : MonoBehaviour
            case "Speed Boost":
                 StatsManager.Instance.UpdateSpeed(0.2f);
                 break;
-            case "Armor Boost":
-                StatsManager.Instance.UpdateArmor(5);
+            case "Arrow Buff":
+                StatsManager.Instance.UpdateArrow(5,0.1f);
                 break;
             case "Gold Boost":
                 StatsManager.Instance.UpdateGoldGain(1);
                 break;
-            
+            case "Archery Unlock":
+                bow.enabled = true;
+                break;
+
+
 
             default:
                 Debug.Log("Unknown skill: " + skillName);

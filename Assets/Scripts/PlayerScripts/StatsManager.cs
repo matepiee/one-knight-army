@@ -25,6 +25,7 @@ public class StatsManager : MonoBehaviour
     public int maxHp;
 
     [Header("Bow Stats")]
+    public int ArrowDamage;
     public float shootCooldown = .5f;
     public float shootTimer;
 
@@ -74,5 +75,12 @@ public class StatsManager : MonoBehaviour
     {
         goldGain += amount;
     }
+
+    public void UpdateArrow(int dmg,float cd)
+    {
+        ArrowDamage+= dmg;
+        shootCooldown-= cd;
+    }
+
 
 }
