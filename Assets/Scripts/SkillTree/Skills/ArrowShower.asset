@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1d6d13631b67346b9d0d223aa21ce6, type: 3}
   m_Name: ArrowShower
   m_EditorClassIdentifier: Assembly-CSharp::SkillSO
-  skillName: Arrow Shower
+  skillName: Arrow Buff
   maxLevel: 5
   skillIcon: {fileID: 21300000, guid: 9b123c465d52f474882d09bd71649f3b, type: 3}

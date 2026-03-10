@@ -89,7 +89,7 @@ public class Player_Bow : MonoBehaviour
 
         arrow.direction = aimDirection;
         arrow.speed = 12f;           // vagy StatsManagerbõl vedd, ha van
-        arrow.damage = StatsManager.Instance.damage;  // ha szeretnéd egységesíteni
+        arrow.ArrowDamage = StatsManager.Instance.ArrowDamage;  // ha szeretnéd egységesíteni
 
         StatsManager.Instance.shootTimer = StatsManager.Instance.shootCooldown;
 

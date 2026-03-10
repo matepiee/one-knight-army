@@ -14,7 +14,7 @@ public class Arrow : MonoBehaviour
     public SpriteRenderer sr;
     public Sprite buriedSprite;
 
-    public int damage;
+    public int ArrowDamage;
     public float knockbackForce;
     public float knockbackTime;
     public float stunTime;
@@ -41,7 +41,7 @@ public class Arrow : MonoBehaviour
 
             if (health != null)
             {
-                health.ChangeHealth(-damage);
+                health.ChangeHealth(-ArrowDamage);
             }
 
             if (knockback != null)
