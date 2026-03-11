@@ -8,15 +8,16 @@ public class SkillTreeToggler : MonoBehaviour
 {
     public CanvasGroup skillsCanvas;
     public CanvasGroup statsCanvas;
-    private bool skillTreeOpen=false;
+    public bool skillTreeOpen=false;
     public Button enter;
     public Button leave;
-   
+
     private void Start()
     {
         enter.onClick.AddListener(SkillTreeEnter);
         leave.onClick.AddListener(SkillTreeLeave);
     }
+
     public void SkillTreeEnter()
     {
         Time.timeScale = 0;
