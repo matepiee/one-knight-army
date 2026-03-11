@@ -3,28 +3,34 @@
 ![Status](https://img.shields.io/badge/Status-Fejlesztés%20alatt-orange)
 ![Type](https://img.shields.io/badge/Projekt-Szakdolgozat-blue)
 
-> **Szakdolgozati projekt** – Egy egyedi Tower Defense élmény.
+> **Szakdolgozati projekt** – Egy egyedi, top-down nézetű Tower Defense és Action-RPG hibrid.
 
 ## 📖 Összefoglaló
 
-A **One Knight Army** egy Tower Defense típusú stratégiai játék, amelyben a játékos **egy lovag szemszögéből** irányítja az eseményeket és veszi ki a részét a harcból. Fontos játák elem az **NPC**-k és a **Questek** is.
+A **One Knight Army** egy feszült, felülnézetes (top-down) stratégiai játék, amelyben a megszokott Tower Defense mechanikák egyetlen hős irányításával egészülnek ki. A játékos **egy lovag szemszögéből** éli át az eseményeket, és a tornyok építése mellett közvetlenül is kiveszi a részét a harcból. 
 
-A cél megvédeni a bázist a hullámokban támadó ellenségektől, miközben dinamikusan kell kezelni a védekezést és a karakter irányítását.
+A cél megvédeni a bázist a hullámokban támadó ellenségektől. A túléléshez elengedhetetlen a dinamikus védekezés, a karakter képességeinek fejlesztése, valamint az **NPC**-kkel való interakció és a **Küldetések (Questek)** teljesítése.
+
+### ✨ Főbb Jellemzők:
+* **Hibrid Játékmenet:** Tower defense alapok, valós idejű karakterirányítással fűszerezve.
+* **Fejlődési Rendszer:** Részletes Képességfa (Skill Tree), ahol a játékos a saját játékstílusához igazíthatja a lovagját (pl. sebzés, életerő, pajzs, íjászat).
+* **Pixel Art Látványvilág:** Egyedi, kidolgozott retro grafikai stílus.
+* **Küldetésrendszer:** NPC-k és feladatok, amelyek tovább mélyítik a játékmenetet.
 
 ## 👥 Készítők
 
-A projektet a következő tanulók készítették:
+A projektet a következő hallgatók készítették:
 
-- **Bangó Máté**
-- **Bacskai Bence**
-- **Juhász Márk Ferenc**
+* **Bangó Máté**
+* **Bacskai Bence**
+* **Juhász Márk Ferenc**
 
 ---
 
 ## 📸 Galéria
 
-Itt látható néhány kép a játékmenetről és a fejlesztés fázisairól.
+Íme néhány kép a játék jelenlegi állapotáról és látványvilágáról:
 
-|                   Főmenü                    |                    Játékmenet                     |
-| :-----------------------------------------: | :-----------------------------------------------: |
-| ![Főmenü](docs/images/menu_placeholder.png) | ![Gameplay](docs/images/gameplay_placeholder.png) |
+| Főmenü | Képességfa (Skill Tree) | A Lovag |
+| :---: | :---: | :---: |
+| ![Főmenü](docs/images/mainmenu.PNG) | ![Képességfa](docs/images/skilltree.PNG) | ![Karakter](docs/images/character.PNG) |
