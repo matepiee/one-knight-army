@@ -31,7 +31,7 @@ public class ShopKeeper : MonoBehaviour
                     shopCanvasGroup.alpha = 1;
                     shopCanvasGroup.blocksRaycasts = true;
                     shopCanvasGroup.interactable = true;
-                    OpenItemShop();
+                    OpenPotionShop();
                 }
                 else
                 {

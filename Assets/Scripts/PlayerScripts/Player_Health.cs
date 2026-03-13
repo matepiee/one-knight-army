@@ -13,6 +13,7 @@ public class Player_Health : MonoBehaviour
     public GameObject deathParticle;
     [Header("Damage Effects")]
     public CinemachineImpulseSource impulseSource;
+    public ScreenFlashEffect screenFlash;
 
     private Player_Movement moveScript;
     private SpriteRenderer spriteRenderer;
@@ -40,6 +41,10 @@ public class Player_Health : MonoBehaviour
             {
                 impulseSource.GenerateImpulse();
             }
+            if (screenFlash != null)
+            {
+                screenFlash.PlayFlash();
+            }
         }
 
         StatsManager.Instance.currentHp += amount;
@@ -62,7 +67,6 @@ public class Player_Health : MonoBehaviour
 
     void Die()
     {
-        
         StartCoroutine(RespawnRoutine());
     }
 

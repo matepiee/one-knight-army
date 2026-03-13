@@ -78,7 +78,7 @@ public class ShopManager : MonoBehaviour
             if (slot.itemSO == itemSO)
             {
 
-                inventoryManager.gold += slot.price; // slot.price - {amount} // If you want the item to be sold at a lower price
+                inventoryManager.gold += slot.price;
                 inventoryManager.goldText.text = inventoryManager.gold.ToString();
                 return;
             }
