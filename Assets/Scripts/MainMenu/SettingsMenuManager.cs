@@ -11,32 +11,44 @@ public class SettingsMenuManager : MonoBehaviour
 
     void Start()
     {
-        // Grafika szinkronizálása indításkor
         graphicsDropdown.value = QualitySettings.GetQualityLevel();
         graphicsDropdown.RefreshShownValue();
 
-        // Sliderek szinkronizálása a Mixer jelenlegi értékeivel
-        // Így a pötty ott lesz, ahol a hangerõ valójában áll
-        float val;
-        if (mainAudioMixer.GetFloat("MasterVol", out val)) masterVol.value = val;
-        if (mainAudioMixer.GetFloat("MusicVol", out val)) musicVol.value = val;
-        if (mainAudioMixer.GetFloat("SFXVol", out val)) sfxVol.value = val;
+        // Értékek betöltése PlayerPrefs-bõl (ha még nincs mentve, az alapértelmezett 0.75f)
+        masterVol.value = PlayerPrefs.GetFloat("MasterVol", 0.75f);
+        musicVol.value = PlayerPrefs.GetFloat("MusicVol", 0.75f);
+        sfxVol.value = PlayerPrefs.GetFloat("SFXVol", 0.75f);
+
+        // Azonnali frissítés, hogy a Mixer is tudja
+        UpdateVolumes();
     }
 
-    // Mivel a Slider már -80 és 0 között van, csak simán átadjuk az értéket
+    private void UpdateVolumes()
+    {
+        ChangeMasterVolume();
+        ChangeMusicVolume();
+        ChangeSFXVolume();
+    }
+
     public void ChangeMasterVolume()
     {
-        mainAudioMixer.SetFloat("MasterVol", masterVol.value);
+        float val = masterVol.value;
+        mainAudioMixer.SetFloat("MasterVol", Mathf.Log10(val) * 20);
+        PlayerPrefs.SetFloat("MasterVol", val); // Mentés
     }
 
     public void ChangeMusicVolume()
     {
-        mainAudioMixer.SetFloat("MusicVol", musicVol.value);
+        float val = musicVol.value;
+        mainAudioMixer.SetFloat("MusicVol", Mathf.Log10(val) * 20);
+        PlayerPrefs.SetFloat("MusicVol", val); // Mentés
     }
 
     public void ChangeSFXVolume()
     {
-        mainAudioMixer.SetFloat("SFXVol", sfxVol.value);
+        float val = sfxVol.value;
+        mainAudioMixer.SetFloat("SFXVol", Mathf.Log10(val) * 20);
+        PlayerPrefs.SetFloat("SFXVol", val); // Mentés
     }
 
     public void ChangeGraphicsQuality()

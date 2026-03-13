@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 7282113511687836299}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.33, y: -0.48, z: 0}
+  m_LocalPosition: {x: 1.412, y: -0.295, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -452,9 +452,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.048607647, y: -0.27229747}
-  m_Size: {x: 1.8259982, y: 1.8259982}
-  m_Direction: 0
+  m_Offset: {x: -0.083302446, y: -0.48155358}
+  m_Size: {x: 2.3672755, y: 2.0027683}
+  m_Direction: 1
 --- !u!114 &5795288447414689664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,8 +540,8 @@ MonoBehaviour:
   goldText: {fileID: 0}
   slider: {fileID: 7246477582275164128}
   deathParticle: {fileID: 8320477767361073290, guid: 6fbbed7cbdfff484c8049293736fd285, type: 3}
-  currentHp: 3500
-  maxHp: 3500
+  currentHp: 2500
+  maxHp: 2500
 --- !u!114 &831451376395162141
 MonoBehaviour:
   m_ObjectHideFlags: 0

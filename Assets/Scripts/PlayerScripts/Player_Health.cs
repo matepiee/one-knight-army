@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Player_Health : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Player_Health : MonoBehaviour
     public float respawnDelay = 3f;
     [Header("Effects")]
     public GameObject deathParticle;
+    [Header("Damage Effects")]
+    public CinemachineImpulseSource impulseSource;
 
     private Player_Movement moveScript;
     private SpriteRenderer spriteRenderer;
@@ -31,6 +34,14 @@ public class Player_Health : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
+        if(amount < 0)
+        {
+            if(impulseSource != null)
+            {
+                impulseSource.GenerateImpulse();
+            }
+        }
+
         StatsManager.Instance.currentHp += amount;
         StatsManager.Instance.currentHp = Mathf.Clamp(StatsManager.Instance.currentHp, 0, StatsManager.Instance.maxHp);
 
