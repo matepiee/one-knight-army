@@ -1,4 +1,4 @@
-﻿using TMPro;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +6,6 @@ public class Enemy_Health : MonoBehaviour
 {
     public int expReward;
     public int goldReward;
-    public TMP_Text goldText;
 
     public delegate void MonsterDefeated(int exp);
 
@@ -22,16 +21,6 @@ public class Enemy_Health : MonoBehaviour
     private void Start()
     {
         currentHp = maxHp;
-
-        if (goldText == null)
-        {
-            GameObject findtext = GameObject.Find("AmountText");
-
-            if (findtext != null)
-            {
-                goldText = findtext.GetComponent<TextMeshProUGUI>();
-            }
-        }
         UpdateHealthBar();
     }
 
