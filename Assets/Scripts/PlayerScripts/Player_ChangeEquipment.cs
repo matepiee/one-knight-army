@@ -4,7 +4,7 @@ public class Player_ChangeEquipment : MonoBehaviour
 {
     public Player_Combat combat;
     public Player_Bow bow;
-
+    public bool canChangeWeapon = true;
     // Fontos: a karakter Animator komponense (általában a Player gyökéren van)
     public Animator playerAnimator;
 
@@ -25,33 +25,39 @@ public class Player_ChangeEquipment : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("ChangeEquipment"))
+        if (canChangeWeapon)
         {
-            SwitchWeaponMode();
+            if (Input.GetButtonDown("ChangeEquipment"))
+            {
+            
+                SwitchWeaponMode();
+           
+            
+            }
         }
     }
 
     private void SwitchWeaponMode()
     {
         bool switchingToBow = !bow.enabled;
-
         // Script-ek ki/be kapcsolása
         combat.enabled = !combat.enabled;
         bow.enabled = !bow.enabled;
-
+            if (switchingToBow)
+            {
+                // Íj mód → Archer layer aktív, Base (kard) kikapcsol
+                playerAnimator.SetLayerWeight(0, 0f);     // Base Layer (melee/kard)
+                playerAnimator.SetLayerWeight(1, 1f);     // Archer Layer (íj)
+            }
+            else
+            {
+                // Kard mód → Base layer aktív, Archer kikapcsol
+                playerAnimator.SetLayerWeight(0, 1f);
+                playerAnimator.SetLayerWeight(1, 0f);
+            }
+        
         // Layer súlyok beállítása – ez váltja a látható animációt/sprite-ot
-        if (switchingToBow)
-        {
-            // Íj mód → Archer layer aktív, Base (kard) kikapcsol
-            playerAnimator.SetLayerWeight(0, 0f);     // Base Layer (melee/kard)
-            playerAnimator.SetLayerWeight(1, 1f);     // Archer Layer (íj)
-        }
-        else
-        {
-            // Kard mód → Base layer aktív, Archer kikapcsol
-            playerAnimator.SetLayerWeight(0, 1f);
-            playerAnimator.SetLayerWeight(1, 0f);
-        }
+        
 
         // Extra biztonság: reseteljük az íj cooldown-ját váltáskor
         if (bow.enabled)

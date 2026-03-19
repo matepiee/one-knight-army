@@ -55,10 +55,6 @@ public class UseItem : MonoBehaviour
             StatsManager.Instance.UpdateSpeed(itemSO.speed);
         if(itemSO.damage > 0)
             StatsManager.Instance.UpdateAttackDamage(itemSO.damage);
-        if (itemSO.armor > 0)
-            StatsManager.Instance.UpdateArmor(itemSO.armor);
-        if (itemSO.goldgain > 0)
-            StatsManager.Instance.UpdateGoldGain(itemSO.goldgain);
         if (itemSO.duration > 0)
         {
             StartCoroutine(EffectTimer(itemSO, itemSO.duration));
@@ -91,9 +87,5 @@ public class UseItem : MonoBehaviour
             StatsManager.Instance.UpdateSpeed(-itemSO.speed);
         if (itemSO.damage > 0)
             StatsManager.Instance.UpdateAttackDamage(-itemSO.damage);
-        if (itemSO.armor > 0)
-            StatsManager.Instance.UpdateArmor(-itemSO.armor);
-        if (itemSO.goldgain > 0)
-            StatsManager.Instance.UpdateGoldGain(-itemSO.goldgain);
     }
 }

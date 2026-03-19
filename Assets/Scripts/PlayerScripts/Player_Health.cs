@@ -14,6 +14,7 @@ public class Player_Health : MonoBehaviour
     [Header("Damage Effects")]
     public CinemachineImpulseSource impulseSource;
     public ScreenFlashEffect screenFlash;
+    public ScreenFlashEffect screenFlashOnGuard;
 
     private Player_Movement moveScript;
     private SpriteRenderer spriteRenderer;
@@ -35,7 +36,22 @@ public class Player_Health : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        if(amount < 0)
+
+        // HA sebzést kapunk ÉS a Guard script épp fut (enabled)
+        if (amount < 0 && GetComponent<Player_Guard>().enabled)
+        {
+            GetComponent<Player_ChangeToGuard>().ResetAfterBlock();
+            if (impulseSource != null)
+            {
+                impulseSource.GenerateImpulse();
+            }
+            if (screenFlashOnGuard != null)
+            {
+                screenFlashOnGuard.PlayShieldFlash();
+            }
+            return; // Nem megy tovább a kód, nincs sebzés
+        }
+        if (amount < 0)
         {
             if(impulseSource != null)
             {
@@ -103,4 +119,5 @@ public class Player_Health : MonoBehaviour
             healthText.text = "HP:" + StatsManager.Instance.currentHp + "/" + StatsManager.Instance.maxHp;
         }
     }
+
 }

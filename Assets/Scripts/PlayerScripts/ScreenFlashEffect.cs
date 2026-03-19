@@ -5,8 +5,14 @@ using System.Collections;
 
 public class ScreenFlashEffect : MonoBehaviour
 {
-    private Volume volume;
+    public Volume volume;
     private Vignette vignette;
+
+    public Volume shieldVolume;
+    private Vignette shieldVignette;
+
+    private Coroutine flashCoroutine;
+    private Coroutine shieldCoroutine;
 
     [Header("Settings")]
     public float flashIntensity = 0.6f;
@@ -14,29 +20,57 @@ public class ScreenFlashEffect : MonoBehaviour
 
     void Start()
     {
-        volume = GetComponent<Volume>();
-        if (volume.profile.TryGet(out vignette))
+
+        if (volume != null)
         {
-            vignette.intensity.value = 0f;
+            if (volume.profile.TryGet(out vignette))
+            {
+                vignette.intensity.value = 0f;
+            }
+            else
+            {
+                Debug.LogError("Nem található Vignette effekt a Damage Volume profiljában!");
+            }
         }
-        else
+
+        if (shieldVolume != null)
         {
-            Debug.LogError("Nem található Vignette effekt a Global Volume profiljában!");
+            if (shieldVolume.profile.TryGet(out shieldVignette))
+            {
+                shieldVignette.intensity.value = 0f;
+            }
+            else
+            {
+                Debug.LogError("Nem található Vignette effekt a Shield Volume profiljában!");
+            }
         }
+
     }
 
     public void PlayFlash()
     {
         if (vignette != null)
         {
-            StopAllCoroutines();
-            StartCoroutine(FlashRoutine());
+            if (flashCoroutine != null) StopCoroutine(flashCoroutine);
+            flashCoroutine = StartCoroutine(FlashRoutine());
+        }
+    }
+
+    public void PlayShieldFlash()
+    {
+        if (shieldVignette != null)
+        {
+            if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
+            shieldCoroutine = StartCoroutine(ShieldFlashRoutine());
         }
     }
 
     IEnumerator FlashRoutine()
     {
+        volume.priority = 100;
         vignette.intensity.value = flashIntensity;
+
+        yield return new WaitForSeconds(0.06f);
 
         while (vignette.intensity.value > 0)
         {
@@ -46,5 +80,24 @@ public class ScreenFlashEffect : MonoBehaviour
 
             yield return null;
         }
+        volume.priority = 1;
+    }
+
+    IEnumerator ShieldFlashRoutine()
+    {
+        shieldVolume.priority = 101;
+        shieldVignette.intensity.value = flashIntensity;
+
+        yield return new WaitForSeconds(0.1f);
+
+        while (shieldVignette.intensity.value > 0)
+        {
+            shieldVignette.intensity.value -= Time.deltaTime * fadeSpeed;
+
+            if (shieldVignette.intensity.value < 0) shieldVignette.intensity.value = 0;
+
+            yield return null;
+        }
+        shieldVolume.priority = 1;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     public Player_ChangeEquipment bow;
+    
 
     private void OnEnable()
     {
@@ -11,9 +12,10 @@ public class SkillManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        SkillSlot.OnAbilityPointSpent += HandleAbilityPointSpent;
+        SkillSlot.OnAbilityPointSpent -= HandleAbilityPointSpent;
     }
 
+    
     private void HandleAbilityPointSpent(SkillSlot slot)
     {
         string skillName = slot.skillSO.skillName;
@@ -32,8 +34,8 @@ public class SkillManager : MonoBehaviour
             case "Arrow Buff":
                 StatsManager.Instance.UpdateArrow(5,0.1f);
                 break;
-            case "Gold Boost":
-                StatsManager.Instance.UpdateGoldGain(1);
+            case "Guard Unlock":
+                StatsManager.Instance.UnlockGuard();
                 break;
             case "Archery Unlock":
                 bow.enabled = true;
