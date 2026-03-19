@@ -7,6 +7,7 @@ public class Player_Movement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
+
     [Header("Attack Settings")]
     public float attackOffset = 0.8f; // Milyen messze legyen az attackPoint a karaktertõl
 

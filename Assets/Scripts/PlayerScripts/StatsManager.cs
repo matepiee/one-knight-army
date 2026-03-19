@@ -8,14 +8,16 @@ public class StatsManager : MonoBehaviour
     public StatsUI statsUI;
     public TMP_Text healthText;
 
+    public Player_ChangeToGuard guard;
+    public Canvas shieldCanvas;
+    public CanvasGroup shieldCanvasGroup;
+
     [Header("Combat Stats")]
     public int damage;
     public float weaponRange;
     public float knockbackForce;
     public float knockbackTime;
     public float stunTime;
-    public int armor;
-    public float goldGain;
 
     [Header("Movement Stats")]
     public float speed;
@@ -28,6 +30,12 @@ public class StatsManager : MonoBehaviour
     public int ArrowDamage;
     public float shootCooldown = .5f;
     public float shootTimer;
+
+    public void Start()
+    {
+        shieldCanvas.enabled = false;
+        shieldCanvasGroup.alpha = 0;
+    }
 
     private void Awake()
     {
@@ -66,20 +74,18 @@ public class StatsManager : MonoBehaviour
         speed += amount;
     }
 
-    public void UpdateArmor(int amount)
-    {
-        armor += amount;
-    }
-
-    public void UpdateGoldGain(float amount)
-    {
-        goldGain += amount;
-    }
 
     public void UpdateArrow(int dmg,float cd)
     {
         ArrowDamage+= dmg;
         shootCooldown-= cd;
+    }
+
+    public void UnlockGuard()
+    {
+        guard.enabled = true;
+        shieldCanvas.enabled = true;
+        shieldCanvasGroup.alpha = 1;
     }
 
 

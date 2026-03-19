@@ -6,6 +6,7 @@ public class Player_Bow : MonoBehaviour
     public GameObject arrowPrefab;
 
     public Player_Movement playerMovement;
+    public Player_ChangeToGuard guard;
 
     private Vector2 aimDirection = Vector2.right;
 
@@ -20,8 +21,15 @@ public class Player_Bow : MonoBehaviour
     {
         anim.SetLayerWeight(0, 0);
         anim.SetLayerWeight(1, 1);
+        guard.canSwitchToGuard = false; // megakadályozzuk a guard váltást, amíg íj van felszerelve
         timeSinceEnabled = Time.time;
         StatsManager.Instance.shootTimer = StatsManager.Instance.shootCooldown;
+    }
+    void OnDisable()
+    {
+        guard.canSwitchToGuard = true; // visszaengedjük a guard váltást, ha kikapcsoljuk az íjat
+        anim.SetLayerWeight(0, 1);
+        anim.SetLayerWeight(1, 0);
     }
 
     void Update()
