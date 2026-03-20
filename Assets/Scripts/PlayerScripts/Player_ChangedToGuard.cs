@@ -31,18 +31,18 @@ public class Player_ChangeToGuard : MonoBehaviour
         {
             if (canSwitchToGuard)
             {
-                // GOMB LENYOMÁSA: Belépés Guard módba
-            if (Input.GetButtonDown("Guard"))
-            {
-                    StartGuarding();
+                    // GOMB LENYOMÁSA: Belépés Guard módba
+                if (Input.GetButtonDown("Guard"))
+                {
+                        StartGuarding();
                 
-            }
+                }
 
-            // GOMB ELENGEDÉSE: Visszaváltás Combat módba (ha nem ütöttek meg közben)
-            if (Input.GetButtonUp("Guard") && guard.enabled)
-            {
-                StopGuarding();
-            }
+                // GOMB ELENGEDÉSE: Visszaváltás Combat módba (ha nem ütöttek meg közben)
+                if (Input.GetButtonUp("Guard") && guard.enabled)
+                {
+                   StopGuarding();
+                }
             }
             
         }
