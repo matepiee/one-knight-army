@@ -1,10 +1,9 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillManager : MonoBehaviour
 {
-    public Player_ChangeEquipment bow;
-    
 
     private void OnEnable()
     {
@@ -28,7 +27,7 @@ public class SkillManager : MonoBehaviour
             case "Attack Damage Boost":
                 StatsManager.Instance.UpdateAttackDamage(5);
                 break;
-           case "Speed Boost":
+            case "Speed Boost":
                 StatsManager.Instance.UpdateSpeed(0.2f);
                 break;
             case "Arrow Buff":
@@ -38,7 +37,13 @@ public class SkillManager : MonoBehaviour
                 StatsManager.Instance.UnlockGuard();
                 break;
             case "Archery Unlock":
-                bow.enabled = true;
+                StatsManager.Instance.UnlockArchery();
+                break;
+            case "Water Magic":
+                StatsManager.Instance.Heal(5);
+                break;
+            case "Bloodlust Magic":
+                StatsManager.Instance.UnlockRage();
                 break;
 
 
