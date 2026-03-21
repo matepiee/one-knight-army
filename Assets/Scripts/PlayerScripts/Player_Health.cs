@@ -37,6 +37,13 @@ public class Player_Health : MonoBehaviour
     public void ChangeHealth(int amount)
     {
 
+        // Ellenőrizzük, hogy sebezhetetlenek vagyunk-e
+        Player_Rage rage = GetComponent<Player_Rage>();
+        if (rage != null && rage.isInvincible && amount < 0)
+        {
+            return; // Kilépünk a függvényből, nem vonunk le életet
+        }
+
         // HA sebzést kapunk ÉS a Guard script épp fut (enabled)
         if (amount < 0 && GetComponent<Player_Guard>().enabled)
         {

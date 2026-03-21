@@ -26,13 +26,13 @@ public class Player_Heal : MonoBehaviour
         if (canheal)
         {
             StatsManager.Instance.UpdateHealth(StatsManager.Instance.heal);
-            ResetAfterBlock();
+            ResetAfterHeal();
             healSliderGroup.alpha = 1;
         }
         
     }
 
-    public void ResetAfterBlock()
+    public void ResetAfterHeal()
     {
         if (isCooldownActive) return;
         StartCoroutine(CooldownRoutine());
