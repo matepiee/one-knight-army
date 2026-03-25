@@ -7,7 +7,7 @@ public class StatsUI : MonoBehaviour
     public GameObject[] statsSlots;
     public CanvasGroup statsCanvas;
 
-    private bool statsOpen=false;
+    public bool statsOpen=false;
 
     private void Start()
     {
@@ -21,27 +21,39 @@ public class StatsUI : MonoBehaviour
         {
             if (statsOpen)
             {
-                Time.timeScale = 1;
-                UpdateAllStats();
-                statsCanvas.alpha = 0;
-                statsCanvas.interactable = false;
-                statsCanvas.blocksRaycasts = false;
-                statsOpen=false;
+                CloseStats();
             }
             else
             {
-                Time.timeScale = 0;
-                UpdateAllStats();
-                statsCanvas.alpha = 1;
-                statsCanvas.interactable = true;
-                statsCanvas.blocksRaycasts =true;
-                statsOpen = true;
-
-            }  
+                OpenStats();
+            }
         }
     }
 
+    public void OpenStats()
+    {
+        if (statsOpen) return;
 
+        UIManager.OpenWindowCount++; // NÖVELJÜK a számlálót
+        Time.timeScale = 0;
+        UpdateAllStats();
+        statsCanvas.alpha = 1;
+        statsCanvas.interactable = true;
+        statsCanvas.blocksRaycasts = true;
+        statsOpen = true;
+    }
+
+    public void CloseStats()
+    {
+        if (!statsOpen) return;
+
+        UIManager.OpenWindowCount--; // CSÖKKENTJÜK a számlálót
+        Time.timeScale = 1;
+        statsCanvas.alpha = 0;
+        statsCanvas.interactable = false;
+        statsCanvas.blocksRaycasts = false;
+        statsOpen = false;
+    }
     public void UpdateStrength()
     {
         statsSlots[0].GetComponentInChildren<TMP_Text>().text = "Strength: " + StatsManager.Instance.damage;

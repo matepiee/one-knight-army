@@ -8,7 +8,7 @@ public class SkillTreeToggler : MonoBehaviour
 {
     public CanvasGroup skillsCanvas;
     public CanvasGroup statsCanvas;
-    private bool skillTreeOpen=false;
+    public bool skillTreeOpen=false;
     public Button enter;
     public Button leave;
    
@@ -19,6 +19,9 @@ public class SkillTreeToggler : MonoBehaviour
     }
     public void SkillTreeEnter()
     {
+        if (skillTreeOpen) return;
+
+        UIManager.OpenWindowCount++;
         Time.timeScale = 0;
         skillsCanvas.alpha = 1;
         skillsCanvas.blocksRaycasts = true;
@@ -32,6 +35,9 @@ public class SkillTreeToggler : MonoBehaviour
     }
     public void SkillTreeLeave()
     {
+        if (!skillTreeOpen) return;
+
+        UIManager.OpenWindowCount--;
         Time.timeScale = 1;
         skillsCanvas.alpha = 0;
         skillsCanvas.blocksRaycasts = false;
