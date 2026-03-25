@@ -8,6 +8,10 @@ public class PauseManager : MonoBehaviour
     public GameObject settingsCanvas;
     public CanvasGroup settingsCanvasGroup;
 
+    public ShopKeeper shopKeeper;
+    public StatsUI statsUI;
+    public SkillTreeToggler skillTree;
+
     public bool isPaused = false;
     void Start()
     {
@@ -19,21 +23,41 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause")) // Ez az Escape nálad
         {
+            // 1. PRIORITÁS: Ha a Settings (vagy bármilyen belsõ ablak) nyitva van
+            if (settingsCanvas.activeSelf)
+            {
+                CloseSettings();
+                return; // Megállunk, nem fut tovább a kód
+            }
+
+            // 2. PRIORITÁS: Ha a Global UI (Shop vagy Stats) nyitva van
+            if (UIManager.IsAnyUIOpen)
+            {
+                if (shopKeeper != null && shopKeeper.isShopOpen)
+                {
+                    shopKeeper.CloseShop();
+                }
+                else if (statsUI != null && statsUI.statsOpen)
+                {
+                    statsUI.CloseStats();
+                }
+                else if (skillTree != null && skillTree.skillTreeOpen)
+                {
+                    skillTree.SkillTreeLeave();
+                }
+                return;
+            }
+
+            // 3. PRIORITÁS: Ha semmi nincs nyitva, jöhet a Pause/Resume
             if (isPaused)
             {
                 ResumeGame();
-                pauseCanvasGroup.alpha = 0;
-                pauseCanvasGroup.blocksRaycasts = false;
-                pauseCanvasGroup.interactable = false;
             }
             else
             {
                 PauseGame();
-                pauseCanvasGroup.alpha = 1;
-                pauseCanvasGroup.blocksRaycasts = true;
-                pauseCanvasGroup.interactable = true;
             }
         }
     }
@@ -41,12 +65,18 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         pauseCanvas.SetActive(true);
+        pauseCanvasGroup.alpha = 1;
+        pauseCanvasGroup.blocksRaycasts = true;
+        pauseCanvasGroup.interactable = true;
         Time.timeScale = 0;
         isPaused = true;
     }
     public void ResumeGame()
     {
         pauseCanvas.SetActive(false);
+        pauseCanvasGroup.alpha = 0;
+        pauseCanvasGroup.blocksRaycasts = false;
+        pauseCanvasGroup.interactable = false;
         Time.timeScale = 1;
         isPaused = false;
     }

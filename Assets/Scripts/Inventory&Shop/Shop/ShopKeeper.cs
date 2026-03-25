@@ -40,6 +40,8 @@ public class ShopKeeper : MonoBehaviour
         if (!isShopOpen)
         {
             isShopOpen = true;
+            UIManager.OpenWindowCount++;
+
             Time.timeScale = 0;
             
             OnShopStateChanged?.Invoke(shopManager, true);
@@ -59,7 +61,8 @@ public class ShopKeeper : MonoBehaviour
         {
             Time.timeScale = 1;
             isShopOpen = false;
-            
+            UIManager.OpenWindowCount--;
+
             OnShopStateChanged?.Invoke(shopManager, false);
             shopCanvasGroup.blocksRaycasts = false;
             shopCanvasGroup.interactable = false;
@@ -77,6 +80,13 @@ public class ShopKeeper : MonoBehaviour
         isAnimating = false;
     }
 
+    public void CloseShop()
+    {
+        if (isShopOpen && !isAnimating)
+        {
+            StartCoroutine(ToggleShopRoutine());
+        }
+    }
     public void OpenItemShop()
     {
         shopManager.PopulateShopItems(shopItems);
@@ -110,11 +120,6 @@ public class ShopKeeper : MonoBehaviour
                 isShopOpen = false;
                 OnShopStateChanged?.Invoke(shopManager, false);
             }
-            /*
-            shopCanvasGroup.alpha = 0;
-            shopCanvasGroup.blocksRaycasts = false;
-            shopCanvasGroup.interactable = false;
-            */
         }
     }
 }
