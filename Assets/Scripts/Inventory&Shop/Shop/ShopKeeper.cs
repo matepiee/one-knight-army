@@ -19,17 +19,14 @@ public class ShopKeeper : MonoBehaviour
 
     public static event Action<ShopManager, bool> OnShopStateChanged;
 
-    private bool playerinrange;
+    public bool playerinrange;
     public bool isShopOpen;
 
-    void Update()
+    public void OpenShop()
     {
-        if (playerinrange)
+        if (!isAnimating)
         {
-            if (Input.GetButtonDown("Interact") && !isAnimating)
-            {
-                StartCoroutine(ToggleShopRoutine());
-            }
+            StartCoroutine(ToggleShopRoutine());
         }
     }
 
@@ -106,7 +103,7 @@ public class ShopKeeper : MonoBehaviour
         }
     }
 
-    
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -116,9 +113,19 @@ public class ShopKeeper : MonoBehaviour
 
             if (isShopOpen)
             {
-                Time.timeScale = 1;
+                UIManager.OpenWindowCount--;
+
                 isShopOpen = false;
+                Time.timeScale = 1;
+
                 OnShopStateChanged?.Invoke(shopManager, false);
+
+                shopCanvasGroup.alpha = 0;
+                shopCanvasGroup.blocksRaycasts = false;
+                shopCanvasGroup.interactable = false;
+
+                isAnimating = false;
+                StopAllCoroutines();
             }
         }
     }
