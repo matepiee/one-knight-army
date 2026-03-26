@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 2928247619250550179}
   - component: {fileID: -8433783164908006343}
   m_Layer: 9
-  m_Name: Skeleton
+  m_Name: Panda
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6471116574714101982, guid: 0807e1c079fbc48eaa6d094e7ef359f4, type: 3}
+  m_Sprite: {fileID: -8149974332647491319, guid: 7161ed33898f54ff69c1a4d09140b918, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -267,8 +267,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.090233564, y: 0.027599812}
-  m_Size: {x: 0.70416117, y: 1.116255}
+  m_Offset: {x: 0.03051138, y: 0.033287585}
+  m_Size: {x: 0.81222916, y: 1.1048795}
   m_Direction: 0
 --- !u!114 &2699633336694111411
 MonoBehaviour:
@@ -289,7 +289,7 @@ MonoBehaviour:
   knockbackForce: 1.5
   stunTime: 0.2
   weaponRange: 1
-  damage: 5
+  damage: 30
 --- !u!114 &1208620365344303077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ Animator:
   m_GameObject: {fileID: 2292515491538580860}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28917adddc2af5744909eb3427585a0a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94cca5ff94740d04daffa8a1c9ed2c09, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -350,12 +350,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 8
-  goldReward: 5
+  expReward: 40
+  goldReward: 20
   slider: {fileID: 2037561545098950151}
   deathParticle: {fileID: 8320477767361073290, guid: 6fbbed7cbdfff484c8049293736fd285, type: 3}
-  currentHp: 20
-  maxHp: 20
+  currentHp: 100
+  maxHp: 100
 --- !u!114 &2928247619250550179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.068, y: 0.801}
+  m_AnchoredPosition: {x: -0.006, y: 0.964}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3856128170455063174

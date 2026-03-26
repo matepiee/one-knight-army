@@ -135,4 +135,10 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
+
+    public void StartOver()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
+    }
 }

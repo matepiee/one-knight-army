@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
   playerDetectRange: 6
-  speed: 5
+  speed: 4.5
   attackRange: 1.1
   attackCooldown: 1
   baseReachDistance: 0.5
@@ -513,9 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 17
+  expReward: 20
   goldReward: 10
-  goldText: {fileID: 0}
   slider: {fileID: 7246477582275164128}
   deathParticle: {fileID: 8320477767361073290, guid: 6fbbed7cbdfff484c8049293736fd285, type: 3}
   currentHp: 60
