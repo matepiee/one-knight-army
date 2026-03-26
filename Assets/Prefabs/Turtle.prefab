@@ -535,9 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98b8d0e26782e45af4336feb0c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Health
-  expReward: 225
-  goldReward: 200
-  goldText: {fileID: 0}
+  expReward: 300
+  goldReward: 300
   slider: {fileID: 7246477582275164128}
   deathParticle: {fileID: 8320477767361073290, guid: 6fbbed7cbdfff484c8049293736fd285, type: 3}
   currentHp: 1000
