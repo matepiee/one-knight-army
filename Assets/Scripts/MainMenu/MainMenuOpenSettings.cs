@@ -4,6 +4,9 @@ public class MainMenuOpenSettings : MonoBehaviour
 {
     public CanvasGroup settingsCanvasGroup;
     public GameObject settingsCanvas;
+    public GameObject startButton;
+    public GameObject settingsButton;
+    public GameObject quitButton;
     void Start()
     {
         if (settingsCanvas != null)
@@ -12,11 +15,6 @@ public class MainMenuOpenSettings : MonoBehaviour
         }
     }
 
-    
-    void Update()
-    {
-        
-    }
 
     public void OpenSettings()
     {
@@ -24,6 +22,9 @@ public class MainMenuOpenSettings : MonoBehaviour
         settingsCanvasGroup.alpha = 1;
         settingsCanvasGroup.blocksRaycasts = true;
         settingsCanvasGroup.interactable = true;
+        startButton.SetActive(false);
+        settingsButton.SetActive(false);
+        quitButton.SetActive(false);
     }
 
     public void CloseSettings()
@@ -32,5 +33,8 @@ public class MainMenuOpenSettings : MonoBehaviour
         settingsCanvasGroup.alpha = 0;
         settingsCanvasGroup.blocksRaycasts = false;
         settingsCanvasGroup.interactable = false;
+        startButton.SetActive(true);
+        settingsButton.SetActive(true);
+        quitButton.SetActive(true);
     }
 }

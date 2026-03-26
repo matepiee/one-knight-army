@@ -3315,7 +3315,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948353215}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4577591465467076597, guid: 6b53f4162e2191049be2e6de665ffe63, type: 2}
   m_audioClip: {fileID: 0}
@@ -4447,6 +4447,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuOpenSettings
   settingsCanvasGroup: {fileID: 1220122432}
   settingsCanvas: {fileID: 1220122430}
+  startButton: {fileID: 82789502}
+  settingsButton: {fileID: 455684940}
+  quitButton: {fileID: 1210301644}
 --- !u!1 &1471979991
 GameObject:
   m_ObjectHideFlags: 0
