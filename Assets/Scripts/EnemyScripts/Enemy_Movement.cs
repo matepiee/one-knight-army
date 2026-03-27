@@ -17,6 +17,7 @@ public class Enemy_Movement : MonoBehaviour
     public float attackRange = 1;
     public float attackCooldown = 2;
     public float baseReachDistance = 0.5f;
+    public int baseDamage = 1;
 
     [Header("Separation (Soft Collision)")]
     public float separationRadius = 1f; // Milyen távolságból kezdjék el tolni egymást
@@ -139,7 +140,7 @@ public class Enemy_Movement : MonoBehaviour
         Base_Health baseHealth = baseTarget.GetComponent<Base_Health>();
         if (baseHealth != null)
         {
-            baseHealth.TakeDamage(1);
+            baseHealth.TakeDamage(baseDamage);
         }
 
         // --- POR EFFEKT LÉTREHOZÁSA ELTŰNÉS ELŐTT ---
@@ -153,7 +154,7 @@ public class Enemy_Movement : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void CheckForPlayer()
+    protected virtual void CheckForPlayer()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectRange, playerLayer);
 
@@ -195,12 +196,14 @@ public class Enemy_Movement : MonoBehaviour
         anim.SetBool("IsIdle", false);
         anim.SetBool("IsChasing", false);
         anim.SetBool("IsAttacking", false);
+        anim.SetBool("IsDashing", false);
 
         enemyState = newState;
 
         if (enemyState == EnemyState.Idle) anim.SetBool("IsIdle", true);
         else if (enemyState == EnemyState.Chasing) anim.SetBool("IsChasing", true);
         else if (enemyState == EnemyState.Attacking) anim.SetBool("IsAttacking", true);
+        else if (enemyState == EnemyState.Dash) anim.SetBool("IsDashing", true);
     }
 
     public void ResetToIdle()
@@ -228,5 +231,6 @@ public enum EnemyState
     Idle,
     Chasing,
     Attacking,
-    Knockback
+    Knockback,
+    Dash
 }
