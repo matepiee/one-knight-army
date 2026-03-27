@@ -4,12 +4,12 @@ using UnityEngine.UI;
 
 public class Player_Rage : MonoBehaviour
 {
-    [Header("Duration UI (Aktív idõ)")]
+    [Header("Duration UI")]
     public Slider durationSlider;
     public CanvasGroup durationGroup;
     public float invincibilityDuration = 5f;
 
-    [Header("Cooldown UI (Várakozási idõ)")]
+    [Header("Cooldown UI")]
     public Slider cooldownSlider;
     public CanvasGroup cooldownGroup;
     public float invincibilityCooldown = 30f;
@@ -27,7 +27,23 @@ public class Player_Rage : MonoBehaviour
 
     private void Start()
     {
-        // Alapból minden rejtve
+        ResetRageStatus();
+    }
+
+    // ÚJRAÉLEDÉS KEZELÉSE
+    private void OnEnable()
+    {
+        ResetRageStatus();
+    }
+
+    private void ResetRageStatus()
+    {
+        isInvincible = false;
+        isCooldownActive = false;
+        durationLeft = 0;
+        StopAllCoroutines();
+
+        if (spriteRenderer != null) spriteRenderer.color = Color.white;
         if (durationGroup != null) durationGroup.alpha = 0;
         if (cooldownGroup != null) cooldownGroup.alpha = 0;
 
@@ -37,7 +53,6 @@ public class Player_Rage : MonoBehaviour
 
     private void Update()
     {
-        // 1. DURATION CSÍK KEZELÉSE (Fogyó csík)
         if (durationLeft > 0)
         {
             durationLeft -= Time.deltaTime;
@@ -63,12 +78,13 @@ public class Player_Rage : MonoBehaviour
         durationLeft = invincibilityDuration;
 
         if (durationGroup != null) durationGroup.alpha = 1;
-        if (spriteRenderer != null) spriteRenderer.color = new Color(0.6f, 0f, 0f, 0.9f); // Sárgás fény
+        if (spriteRenderer != null) spriteRenderer.color = new Color(0.6f, 0f, 0f, 0.9f);
     }
 
     private void StopInvincibility()
     {
         isInvincible = false;
+        durationLeft = 0; // Biztonság kedvéért
         if (durationGroup != null) durationGroup.alpha = 0;
         if (spriteRenderer != null) spriteRenderer.color = Color.white;
 
@@ -84,15 +100,17 @@ public class Player_Rage : MonoBehaviour
         while (timer < invincibilityCooldown)
         {
             timer += Time.deltaTime;
-            if (cooldownSlider != null)
-            {
-                // A cooldown csík töltõdjön fel (mint a healnél)
-                cooldownSlider.value = timer;
-            }
+            if (cooldownSlider != null) cooldownSlider.value = timer;
             yield return null;
         }
 
         if (cooldownGroup != null) cooldownGroup.alpha = 0;
         isCooldownActive = false;
+    }
+
+    // Biztonsági takarítás, ha kikapcsol az objektum
+    private void OnDisable()
+    {
+        if (spriteRenderer != null) spriteRenderer.color = Color.white;
     }
 }

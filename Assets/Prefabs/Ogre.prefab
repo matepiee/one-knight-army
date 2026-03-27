@@ -303,10 +303,10 @@ GameObject:
   - component: {fileID: 1345153512498390170}
   - component: {fileID: 7980534992835782253}
   - component: {fileID: 5795288447414689664}
-  - component: {fileID: 3876386514770937445}
   - component: {fileID: 6401611450144409763}
   - component: {fileID: 4895560554359494858}
   - component: {fileID: 831451376395162141}
+  - component: {fileID: 2841246319380125436}
   m_Layer: 9
   m_Name: Ogre
   m_TagString: Enemy
@@ -475,32 +475,6 @@ MonoBehaviour:
   stunTime: 0.5
   weaponRange: 1.6
   damage: 60
---- !u!114 &3876386514770937445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286251563601075931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a5dd4f5f6d7bd4dbc866b4eb46f26f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy_Movement
-  playerDetectRange: 6
-  speed: 2
-  attackRange: 1.6
-  attackCooldown: 3
-  baseReachDistance: 0.5
-  separationRadius: 0.6
-  separationForce: 20
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  detectionPoint: {fileID: 4442102885976901178}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!95 &6401611450144409763
 Animator:
   serializedVersion: 7
@@ -539,8 +513,8 @@ MonoBehaviour:
   goldReward: 50
   slider: {fileID: 7246477582275164128}
   deathParticle: {fileID: 8320477767361073290, guid: 6fbbed7cbdfff484c8049293736fd285, type: 3}
-  currentHp: 2000
-  maxHp: 2000
+  currentHp: 1500
+  maxHp: 1500
 --- !u!114 &831451376395162141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +527,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ca5989fa03e1948926daddd7b9d3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Knockback
+--- !u!114 &2841246319380125436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286251563601075931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84208752482dd1d418b98dc7c21e0059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Ogre_Movement
+  playerDetectRange: 5
+  speed: 2
+  attackRange: 1.6
+  attackCooldown: 2
+  baseReachDistance: 0.5
+  baseDamage: 5
+  separationRadius: 1
+  separationForce: 40
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  detectionPoint: {fileID: 4442102885976901178}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  dashDistance: 5
+  dashSpeed: 10
+  dashDuration: 0.5
+  dashCooldown: 5
 --- !u!1 &7962859400415930305
 GameObject:
   m_ObjectHideFlags: 0

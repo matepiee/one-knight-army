@@ -4,16 +4,22 @@ using System.Collections;
 
 public class Player_ChangeToGuard : MonoBehaviour
 {
+    [Header("References")]
     public Player_Combat combat;
     public Player_Guard guard;
     public Animator playerAnimator;
-    public Player_ChangeEquipment changeEquipment; // hogy letiltsuk a váltást, amíg Guard van felszerelve
+    public Player_ChangeEquipment changeEquipment;
     public Slider shieldSlider;
 
+    [Header("Settings")]
+    public float guardCooldown = 5f;
+    public float shieldGracePeriod = 0.4f; // Az Ogre dupla ütése miatt
+
+    [Header("State")]
     public bool canSwitchToGuard = true;
     private bool canGuard = true;
-    private float guardCooldown = 5f;
     private bool isCooldownActive = false;
+    private float speedBeforeGuard; // Itt tároljuk el a sebességet a lassítás elõtt
 
     public void Start()
     {
@@ -22,65 +28,101 @@ public class Player_ChangeToGuard : MonoBehaviour
             shieldSlider.maxValue = guardCooldown;
             shieldSlider.value = guardCooldown;
         }
-        
     }
+
     private void Update()
     {
-        // Ha nincs cooldown, figyeljük a gombot
-        if (canGuard)
+        if (canGuard && canSwitchToGuard)
         {
-            if (canSwitchToGuard)
+            // GOMB LENYOMÁSA: Belépés Guard módba
+            if (Input.GetButtonDown("Guard"))
             {
-                    // GOMB LENYOMÁSA: Belépés Guard módba
-                if (Input.GetButtonDown("Guard"))
-                {
-                        StartGuarding();
-                
-                }
-
-                // GOMB ELENGEDÉSE: Visszaváltás Combat módba (ha nem ütöttek meg közben)
-                if (Input.GetButtonUp("Guard") && guard.enabled)
-                {
-                   StopGuarding();
-                }
+                StartGuarding();
             }
-            
+
+            // GOMB ELENGEDÉSE: Visszaváltás Combat módba
+            if (Input.GetButtonUp("Guard") && guard.enabled)
+            {
+                StopGuarding();
+            }
         }
     }
 
+    private void OnEnable()
+    {
+        ResetShieldStatus();
+    }
+
+    // Egy külön függvény, ami tiszta lapot indít a pajzsnak
+    private void ResetShieldStatus()
+    {
+        isCooldownActive = false;
+        canGuard = true;
+        StopAllCoroutines(); // Megállítunk minden félbemaradt folyamatot
+
+        if (shieldSlider != null)
+        {
+            shieldSlider.value = guardCooldown;
+        }
+
+        // Biztosítjuk, hogy ne maradjon Guard módban vizuálisan
+        if (guard != null) guard.DeactivateGuard();
+        if (combat != null) combat.enabled = true;
+    }
     private void StartGuarding()
     {
-        StatsManager.Instance.speed/=3; // Lassulás Guard módban
+        // 1. ELMENTJÜK az aktuális sebességet (potival együtt!), mielõtt lelassítanánk
+        speedBeforeGuard = StatsManager.Instance.speed;
+
+        // 2. LEVESSZÜK a sebességet (dinamikusan osztva)
+        StatsManager.Instance.speed /= 3f;
+
         combat.enabled = false;
         guard.enabled = true;
 
-        // Rétegek: Guard (2-es index) bekapcsolása
+        // Animator rétegek (Guard réteg bekapcsolása)
         playerAnimator.SetLayerWeight(0, 0f);
         playerAnimator.SetLayerWeight(1, 0f);
         playerAnimator.SetLayerWeight(2, 1f);
 
         guard.ActivateGuard();
-        changeEquipment.canChangeWeapon = false; // megakadályozzuk a váltást, amíg Guard van felszerelve
+        changeEquipment.canChangeWeapon = false;
     }
 
     private void StopGuarding()
     {
-       StatsManager.Instance.speed*=3; // Vissza a normál sebességre
+        // 3. FIX VISSZAÁLLÍTÁS: Pontosan azt adjuk vissza, amit elmentettünk
+        StatsManager.Instance.speed = speedBeforeGuard;
+
         guard.DeactivateGuard();
         guard.enabled = false;
         combat.enabled = true;
 
-        // Rétegek: Vissza az alapra
+        // Rétegek visszaállítása az alapra
         playerAnimator.SetLayerWeight(0, 1f);
         playerAnimator.SetLayerWeight(2, 0f);
-        changeEquipment.canChangeWeapon = true; // visszaengedjük a váltást, ha kikapcsoljuk a Guard-ot
+        changeEquipment.canChangeWeapon = true;
     }
 
     // Ezt hívja meg a Player_Health, ha megütnek blokkolás közben
     public void ResetAfterBlock()
     {
         if (isCooldownActive) return;
-        StartCoroutine(CooldownRoutine());
+
+        // Elindítjuk a késleltetett pihenõt, hogy az Ogre második ütése is a pajzsba menjen
+        StartCoroutine(DelayedReset());
+    }
+
+    IEnumerator DelayedReset()
+    {
+        // Várunk, amíg az Ogre befejezi a dupla ütést (0.2s és 0.5s között)
+        yield return new WaitForSeconds(shieldGracePeriod);
+
+        if (!isCooldownActive)
+        {
+            StopAllCoroutines();
+            StartCoroutine(CooldownRoutine());
+        }
     }
 
     IEnumerator CooldownRoutine()
@@ -88,31 +130,37 @@ public class Player_ChangeToGuard : MonoBehaviour
         isCooldownActive = true;
         canGuard = false;
 
-        // Azonnali visszaváltás, mert elhasználtuk a blokkot
+        // Itt hívjuk meg a Stop-ot, ami visszaállítja a sebességet is!
         StopGuarding();
 
         float timer = 0;
         if (shieldSlider != null) shieldSlider.value = 0;
 
-        // Folyamatosan töltjük a csíkot 7 másodpercen keresztül
+        // Slider töltése
         while (timer < guardCooldown)
         {
             timer += Time.deltaTime;
-            if (shieldSlider != null)
-            {
-                shieldSlider.value = timer;
-            }
-            yield return null; // Vár a következõ frame-ig
+            if (shieldSlider != null) shieldSlider.value = timer;
+            yield return null;
         }
 
         if (shieldSlider != null) shieldSlider.value = guardCooldown;
 
-        Debug.Log("Pajzs áttörve! Cooldown: 7mp");
-
-        //yield return new WaitForSeconds(guardCooldown);
-
         canGuard = true;
         isCooldownActive = false;
-        Debug.Log("Pajzs újra kész!");
+    }
+
+    // Ha a Player meghal vagy a script kikapcsol, takarítsunk fel!
+    private void OnDisable()
+    {
+        // Ha épp Guardban voltunk, adjuk vissza a sebességet
+        if (guard.enabled)
+        {
+            StatsManager.Instance.speed = speedBeforeGuard;
+        }
+
+        isCooldownActive = false;
+        canGuard = true;
+        StopAllCoroutines();
     }
 }
