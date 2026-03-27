@@ -22,9 +22,9 @@ public class PauseManager : MonoBehaviour
         settingsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
     }
+
     void Update()
     {
-        // 1. SHOP (E / Interact)
         if (Input.GetButtonDown("Interact"))
         {
             if (shopKeeper != null && shopKeeper.playerinrange)
@@ -34,10 +34,8 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        // 2. STATS (T / ToggleStats)
         if (Input.GetButtonDown("ToggleStats"))
         {
-            // Csak akkor zárjuk a T-vel, ha a Skill Tree nincs nyitva alatta
             if (statsUI.statsOpen && !skillTree.skillTreeOpen)
             {
                 statsUI.CloseStats();
@@ -48,43 +46,36 @@ public class PauseManager : MonoBehaviour
             }
         }
 
-        // 3. ESCAPE (Prioritási sorrend)
         if (Input.GetButtonDown("Pause"))
         {
-            // Settings bezárása
             if (settingsCanvas != null && settingsCanvas.activeSelf)
             {
                 CloseSettings();
                 return;
             }
 
-            // Skill Tree bezárása (Visszalép a Stats-ba)
             if (skillTree != null && skillTree.skillTreeOpen)
             {
                 skillTree.SkillTreeLeave();
                 return;
             }
 
-            // Stats bezárása
             if (statsUI != null && statsUI.statsOpen)
             {
                 statsUI.CloseStats();
                 return;
             }
 
-            // Shop bezárása
             if (shopKeeper != null && shopKeeper.isShopOpen)
             {
                 shopKeeper.CloseShop();
                 return;
             }
 
-            // Ha semmi más nincs nyitva -> Pause/Resume
             if (isPaused) ResumeGame();
             else if (!UIManager.IsAnyUIOpen) PauseGame();
         }
     }
-
 
     public void PauseGame()
     {
@@ -97,6 +88,7 @@ public class PauseManager : MonoBehaviour
             pauseCanvasGroup.blocksRaycasts = true;
             pauseCanvasGroup.interactable = true;
         }
+        AudioManager.instance.Play("PopUpOpen");
     }
 
     public void ResumeGame()
@@ -112,6 +104,8 @@ public class PauseManager : MonoBehaviour
             pauseCanvasGroup.blocksRaycasts = false;
             pauseCanvasGroup.interactable = false;
         }
+
+        AudioManager.instance.Play("PopUpClose");
     }
 
     public void OpenSettings()
@@ -120,6 +114,8 @@ public class PauseManager : MonoBehaviour
         settingsCanvasGroup.alpha = 1;
         settingsCanvasGroup.blocksRaycasts = true;
         settingsCanvasGroup.interactable = true;
+
+        AudioManager.instance.Play("PopUpOpen");
     }
 
     public void CloseSettings()
@@ -128,6 +124,8 @@ public class PauseManager : MonoBehaviour
         settingsCanvasGroup.alpha = 0;
         settingsCanvasGroup.blocksRaycasts = false;
         settingsCanvasGroup.interactable = false;
+
+        AudioManager.instance.Play("PopUpClose");
     }
 
     public void BackToMainMenu()

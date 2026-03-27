@@ -21,6 +21,8 @@ public class SkillTreeToggler : MonoBehaviour
         skillTreeOpen = true;
         UIManager.OpenWindowCount++;
 
+        AudioManager.instance.Play("PopUpOpen");
+
         skillsCanvas.alpha = 1;
         skillsCanvas.blocksRaycasts = true;
         skillsCanvas.interactable = true;
@@ -35,6 +37,8 @@ public class SkillTreeToggler : MonoBehaviour
         if (!skillTreeOpen) return;
         skillTreeOpen = false;
         UIManager.OpenWindowCount--;
+
+        AudioManager.instance.Play("PopUpClose");
 
         skillsCanvas.alpha = 0;
         skillsCanvas.blocksRaycasts = false;
