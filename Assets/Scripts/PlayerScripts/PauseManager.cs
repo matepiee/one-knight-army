@@ -21,6 +21,11 @@ public class PauseManager : MonoBehaviour
     {
         settingsCanvas.SetActive(false);
         pauseCanvas.SetActive(false);
+
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.PlayPreparationMusic();
+        }
     }
 
     void Update()
@@ -89,6 +94,8 @@ public class PauseManager : MonoBehaviour
             pauseCanvasGroup.interactable = true;
         }
         AudioManager.instance.Play("PopUpOpen");
+
+        MusicManager.instance.PlayPauseMusic();
     }
 
     public void ResumeGame()
@@ -106,6 +113,8 @@ public class PauseManager : MonoBehaviour
         }
 
         AudioManager.instance.Play("PopUpClose");
+
+        MusicManager.instance.ResumePreviousMusic();
     }
 
     public void OpenSettings()

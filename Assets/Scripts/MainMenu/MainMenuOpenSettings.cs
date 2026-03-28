@@ -14,6 +14,8 @@ public class MainMenuOpenSettings : MonoBehaviour
         {
             settingsCanvas.SetActive(false);
         }
+
+        MusicManager.instance.PlayMainMenuMusic();
     }
 
     public void OpenSettings()
