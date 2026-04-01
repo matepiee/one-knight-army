@@ -15,6 +15,9 @@ public class StatsUI : MonoBehaviour
         statsOpen = true;
         UIManager.OpenWindowCount++;
         Time.timeScale = 0;
+
+        AudioManager.instance.Play("PopUpOpen");
+
         UpdateAllStats();
         statsCanvas.alpha = 1;
         statsCanvas.interactable = true;
@@ -27,6 +30,9 @@ public class StatsUI : MonoBehaviour
         statsOpen = false;
         UIManager.OpenWindowCount--;
         Time.timeScale = 1;
+
+        AudioManager.instance.Play("PopUpClose");
+
         statsCanvas.alpha = 0;
         statsCanvas.interactable = false;
         statsCanvas.blocksRaycasts = false;

@@ -7,14 +7,16 @@ public class MainMenuOpenSettings : MonoBehaviour
     public GameObject startButton;
     public GameObject settingsButton;
     public GameObject quitButton;
+
     void Start()
     {
         if (settingsCanvas != null)
         {
             settingsCanvas.SetActive(false);
         }
-    }
 
+        MusicManager.instance.PlayMainMenuMusic();
+    }
 
     public void OpenSettings()
     {
@@ -25,6 +27,8 @@ public class MainMenuOpenSettings : MonoBehaviour
         startButton.SetActive(false);
         settingsButton.SetActive(false);
         quitButton.SetActive(false);
+
+        AudioManager.instance.Play("PopUpOpen");
     }
 
     public void CloseSettings()
@@ -36,5 +40,7 @@ public class MainMenuOpenSettings : MonoBehaviour
         startButton.SetActive(true);
         settingsButton.SetActive(true);
         quitButton.SetActive(true);
+
+        AudioManager.instance.Play("PopUpClose");
     }
 }

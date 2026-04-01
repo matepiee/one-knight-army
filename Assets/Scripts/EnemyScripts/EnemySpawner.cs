@@ -11,6 +11,7 @@ public class Wave
     public GameObject[] enemies;
     public float spawnRate = 2f;
 }
+
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Waves")]
@@ -20,13 +21,10 @@ public class EnemySpawner : MonoBehaviour
     [Header("References")]
     public Button StartButton;
     public Transform enemyParent;
-    //WaveCounterCanvas
     public Canvas WaveCounterCanvas;
     public TMP_Text WaveCounterText;
-    //WinCanvas
     public GameObject WinCanvas;
     public CanvasGroup WinCanvasGroup;
-    //EnemyCounterCanvas
     public GameObject EnemyCounterCanvas;
     public CanvasGroup EnemyCounterCanvasGroup;
     public TMP_Text EnemyCounterText;
@@ -37,10 +35,14 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> activeEnemies = new List<GameObject>();
     private bool winShown = false;
 
+    private bool isPreparationPhase = true;
+
     void Start()
     {
         if (waves.Length > 0)
             timer = waves[currentWaveIndex].spawnRate;
+
+        isPreparationPhase = true;
     }
 
     void Update()
@@ -55,14 +57,23 @@ public class EnemySpawner : MonoBehaviour
                 currentEnemyIndex = 0;
             }
 
-            if (currentWaveIndex < waves.Length)//Prep
+            if (currentWaveIndex < waves.Length)
             {
+                if (!isPreparationPhase)
+                {
+                    isPreparationPhase = true;
+                    if (MusicManager.instance != null)
+                    {
+                        MusicManager.instance.PlayPreparationMusic();
+                    }
+                }
+
                 StartButton.gameObject.SetActive(true);
                 StartButton.interactable = true;
-                WaveCounterText.text = "Preperation";
+                WaveCounterText.text = "Preparation";
                 EnemyCounterCanvasGroup.alpha = 0;
             }
-            else if (currentWaveIndex >= waves.Length && !winShown) //Win
+            else if (currentWaveIndex >= waves.Length && !winShown)
             {
                 winShown = true;
 
@@ -74,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
                 WinCanvasGroup.interactable = true;
             }
         }
-        else // Fight
+        else
         {
             EnemyCounterCanvasGroup.alpha = 1;
             EnemyCounterText.text = waves[currentWaveIndex].enemies.Length + "/" + activeEnemies.Count.ToString();
@@ -98,6 +109,11 @@ public class EnemySpawner : MonoBehaviour
         timer = 0;
         isWaveActive = true;
         WaveCounterText.text = waves[currentWaveIndex].waveName;
+        isPreparationPhase = false;
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.PlayGameMusic();
+        }
 
         Debug.Log(waves[currentWaveIndex].waveName + " elindítva!");
     }
@@ -115,7 +131,6 @@ public class EnemySpawner : MonoBehaviour
             timer = currentWave.spawnRate;
         }
 
-        // Ha az összes ellenség kijött az ADOTT hullámból
         if (currentEnemyIndex >= currentWave.enemies.Length)
         {
             isWaveActive = false;

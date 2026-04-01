@@ -34,13 +34,15 @@ public class ShopKeeper : MonoBehaviour
     {
         isAnimating = true;
 
-        if (!isShopOpen)
+        if (!isShopOpen) 
         {
-            isShopOpen = true;
+            isShopOpen = true; 
             UIManager.OpenWindowCount++;
 
             Time.timeScale = 0;
-            
+
+            AudioManager.instance.Play("PopUpOpen");
+
             OnShopStateChanged?.Invoke(shopManager, true);
             shopCanvasGroup.alpha = 1;
             shopCanvasGroup.blocksRaycasts = true;
@@ -57,8 +59,9 @@ public class ShopKeeper : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            isShopOpen = false;
-            UIManager.OpenWindowCount--;
+
+
+            AudioManager.instance.Play("PopUpClose");
 
             OnShopStateChanged?.Invoke(shopManager, false);
             shopCanvasGroup.blocksRaycasts = false;
@@ -72,6 +75,9 @@ public class ShopKeeper : MonoBehaviour
             yield return new WaitForSecondsRealtime(animationTime);
 
             shopCanvasGroup.alpha = 0;
+
+            isShopOpen = false;
+            UIManager.OpenWindowCount--;
         }
 
         isAnimating = false;
@@ -84,6 +90,7 @@ public class ShopKeeper : MonoBehaviour
             StartCoroutine(ToggleShopRoutine());
         }
     }
+
     public void OpenItemShop()
     {
         shopManager.PopulateShopItems(shopItems);
@@ -103,7 +110,6 @@ public class ShopKeeper : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -117,6 +123,7 @@ public class ShopKeeper : MonoBehaviour
 
                 isShopOpen = false;
                 Time.timeScale = 1;
+
 
                 OnShopStateChanged?.Invoke(shopManager, false);
 
