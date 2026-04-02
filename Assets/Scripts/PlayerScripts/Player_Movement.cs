@@ -9,7 +9,7 @@ public class Player_Movement : MonoBehaviour
 
 
     [Header("Attack Settings")]
-    public float attackOffset = 0.8f; // Milyen messze legyen az attackPoint a karaktertõl
+    public float attackOffset = 0.8f;
 
     private bool isKnockedBack;
     public bool isShooting;
@@ -74,14 +74,12 @@ public class Player_Movement : MonoBehaviour
 
     public void Knockback(Transform enemy, float force, float stunTime)
     {
-        // Ha az objektum inaktív, azonnal lépjünk ki, hogy ne dobjon hibát a StartCoroutine
         if (!gameObject.activeInHierarchy) return;
 
         isKnockedBack = true;
         Vector2 direction = (transform.position - enemy.position).normalized;
         rb.linearVelocity = direction * force;
 
-        // Elindítjuk, de most már biztosak vagyunk benne, hogy aktívak vagyunk
         StartCoroutine(KnockbackCounter(stunTime));
     }
 

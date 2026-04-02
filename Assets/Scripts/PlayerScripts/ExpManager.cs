@@ -20,14 +20,6 @@ public class ExpManager : MonoBehaviour
         UpdateUI();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            GainExperience(2000);
-        }
-    }
-
     private void OnEnable()
     {
         Enemy_Health.OnMonsterDefeated += GainExperience;

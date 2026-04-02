@@ -37,14 +37,12 @@ public class Player_Health : MonoBehaviour
     public void ChangeHealth(int amount)
     {
 
-        // Ellenőrizzük, hogy sebezhetetlenek vagyunk-e
         Player_Rage rage = GetComponent<Player_Rage>();
         if (rage != null && rage.isInvincible && amount < 0)
         {
-            return; // Kilépünk a függvényből, nem vonunk le életet
+            return; 
         }
 
-        // HA sebzést kapunk ÉS a Guard script épp fut (enabled)
         if (amount < 0 && GetComponent<Player_Guard>().enabled)
         {
             GetComponent<Player_ChangeToGuard>().ResetAfterBlock();
@@ -56,7 +54,7 @@ public class Player_Health : MonoBehaviour
             {
                 screenFlashOnGuard.PlayShieldFlash();
             }
-            return; // Nem megy tovább a kód, nincs sebzés
+            return;
         }
         if (amount < 0)
         {
@@ -95,7 +93,6 @@ public class Player_Health : MonoBehaviour
 
     IEnumerator RespawnRoutine()
     {
-        // --- HALÁL FÁZIS ---
         moveScript.enabled = false;
         rb.linearVelocity = Vector2.zero;
         spriteRenderer.enabled = false;
@@ -103,7 +100,6 @@ public class Player_Health : MonoBehaviour
         transform.position = new Vector3(0f, 28f, 0f);
         yield return new WaitForSeconds(respawnDelay);
 
-        // --- ÚJJÁÉLEDÉS FÁZIS ---
         StatsManager.Instance.currentHp = StatsManager.Instance.maxHp;
         UpdateUI();
         spriteRenderer.enabled = true;

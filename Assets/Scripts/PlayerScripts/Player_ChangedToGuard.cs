@@ -13,13 +13,13 @@ public class Player_ChangeToGuard : MonoBehaviour
 
     [Header("Settings")]
     public float guardCooldown = 5f;
-    public float shieldGracePeriod = 0.4f; // Az Ogre dupla ütése miatt
+    public float shieldGracePeriod = 0.4f;
 
     [Header("State")]
     public bool canSwitchToGuard = true;
     private bool canGuard = true;
     private bool isCooldownActive = false;
-    private float speedBeforeGuard; // Itt tároljuk el a sebességet a lassítás elõtt
+    private float speedBeforeGuard;
 
     public void Start()
     {
@@ -34,13 +34,10 @@ public class Player_ChangeToGuard : MonoBehaviour
     {
         if (canGuard && canSwitchToGuard)
         {
-            // GOMB LENYOMÁSA: Belépés Guard módba
             if (Input.GetButtonDown("Guard"))
             {
                 StartGuarding();
             }
-
-            // GOMB ELENGEDÉSE: Visszaváltás Combat módba
             if (Input.GetButtonUp("Guard") && guard.enabled)
             {
                 StopGuarding();
@@ -53,34 +50,29 @@ public class Player_ChangeToGuard : MonoBehaviour
         ResetShieldStatus();
     }
 
-    // Egy külön függvény, ami tiszta lapot indít a pajzsnak
     private void ResetShieldStatus()
     {
         isCooldownActive = false;
         canGuard = true;
-        StopAllCoroutines(); // Megállítunk minden félbemaradt folyamatot
+        StopAllCoroutines();
 
         if (shieldSlider != null)
         {
             shieldSlider.value = guardCooldown;
         }
 
-        // Biztosítjuk, hogy ne maradjon Guard módban vizuálisan
         if (guard != null) guard.DeactivateGuard();
         if (combat != null) combat.enabled = true;
     }
     private void StartGuarding()
     {
-        // 1. ELMENTJÜK az aktuális sebességet (potival együtt!), mielõtt lelassítanánk
         speedBeforeGuard = StatsManager.Instance.speed;
 
-        // 2. LEVESSZÜK a sebességet (dinamikusan osztva)
         StatsManager.Instance.speed /= 3f;
 
         combat.enabled = false;
         guard.enabled = true;
 
-        // Animator rétegek (Guard réteg bekapcsolása)
         playerAnimator.SetLayerWeight(0, 0f);
         playerAnimator.SetLayerWeight(1, 0f);
         playerAnimator.SetLayerWeight(2, 1f);
@@ -91,31 +83,26 @@ public class Player_ChangeToGuard : MonoBehaviour
 
     private void StopGuarding()
     {
-        // 3. FIX VISSZAÁLLÍTÁS: Pontosan azt adjuk vissza, amit elmentettünk
         StatsManager.Instance.speed = speedBeforeGuard;
 
         guard.DeactivateGuard();
         guard.enabled = false;
         combat.enabled = true;
 
-        // Rétegek visszaállítása az alapra
         playerAnimator.SetLayerWeight(0, 1f);
         playerAnimator.SetLayerWeight(2, 0f);
         changeEquipment.canChangeWeapon = true;
     }
 
-    // Ezt hívja meg a Player_Health, ha megütnek blokkolás közben
     public void ResetAfterBlock()
     {
         if (isCooldownActive) return;
 
-        // Elindítjuk a késleltetett pihenõt, hogy az Ogre második ütése is a pajzsba menjen
         StartCoroutine(DelayedReset());
     }
 
     IEnumerator DelayedReset()
     {
-        // Várunk, amíg az Ogre befejezi a dupla ütést (0.2s és 0.5s között)
         yield return new WaitForSeconds(shieldGracePeriod);
 
         if (!isCooldownActive)
@@ -130,13 +117,11 @@ public class Player_ChangeToGuard : MonoBehaviour
         isCooldownActive = true;
         canGuard = false;
 
-        // Itt hívjuk meg a Stop-ot, ami visszaállítja a sebességet is!
         StopGuarding();
 
         float timer = 0;
         if (shieldSlider != null) shieldSlider.value = 0;
 
-        // Slider töltése
         while (timer < guardCooldown)
         {
             timer += Time.deltaTime;
@@ -150,10 +135,8 @@ public class Player_ChangeToGuard : MonoBehaviour
         isCooldownActive = false;
     }
 
-    // Ha a Player meghal vagy a script kikapcsol, takarítsunk fel!
     private void OnDisable()
     {
-        // Ha épp Guardban voltunk, adjuk vissza a sebességet
         if (guard.enabled)
         {
             StatsManager.Instance.speed = speedBeforeGuard;

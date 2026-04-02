@@ -32,19 +32,14 @@ public class Player_Combat : MonoBehaviour
 
     public void DealDamage()
     {
-        // 1. Megkeressük az ÖSSZES ellenséget a körön belül
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, StatsManager.Instance.weaponRange, enemyLayer);
 
-        // 2. Végigmegyünk a listán egy ciklussal
         foreach (Collider2D enemy in hitEnemies)
         {
-            // Megpróbáljuk elkérni az élet scriptet
             if (enemy.TryGetComponent(out Enemy_Health health))
             {
-                // Sebzés kiosztása (AOE - mindenki megkapja!)
                 health.ChangeHealth((int)-StatsManager.Instance.damage);
 
-                // Ha van knockback, azt is mindenkin végrehajtjuk
                 if (enemy.TryGetComponent(out Enemy_Knockback kb))
                 {
                     kb.Knockback(transform, StatsManager.Instance.knockbackForce, StatsManager.Instance.knockbackTime, StatsManager.Instance.stunTime);
@@ -64,7 +59,6 @@ public class Player_Combat : MonoBehaviour
         if (attackPoint == null) return;
         Gizmos.color = Color.red;
 
-        // Megpróbáljuk megkeresni a jelenetben lévõ StatsManagert
         StatsManager stats = Object.FindFirstObjectByType<StatsManager>();
 
         if (stats != null)
@@ -73,7 +67,7 @@ public class Player_Combat : MonoBehaviour
         }
         else
         {
-            Gizmos.DrawWireSphere(attackPoint.position, 1f); // Alapértelmezett
+            Gizmos.DrawWireSphere(attackPoint.position, 1f);
         }
     }
 

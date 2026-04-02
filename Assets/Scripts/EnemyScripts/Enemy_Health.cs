@@ -4,17 +4,18 @@ using UnityEngine.UI;
 
 public class Enemy_Health : MonoBehaviour
 {
-    public int expReward;
-    public int goldReward;
-
     public delegate void MonsterDefeated(int exp);
 
     public static event MonsterDefeated OnMonsterDefeated;
 
     [SerializeField] private Slider slider;
+
+    [Header("Rewards")]
+    public int expReward;
+    public int goldReward;
     [Header("Effects")]
     public GameObject deathParticle;
-
+    [Header("Health")]
     public int currentHp;
     public int maxHp;
 
@@ -41,7 +42,6 @@ public class Enemy_Health : MonoBehaviour
                 inv.gold += goldReward;
                 inv.goldText.text = inv.gold.ToString();
             }
-
             if (deathParticle != null)
             {
                 Instantiate(deathParticle, transform.position, Quaternion.identity);
@@ -63,7 +63,6 @@ public class Enemy_Health : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Keeps the healthbar from flipping when the enemy turns around
         if (slider != null)
         {
             Vector3 scale = slider.transform.localScale;

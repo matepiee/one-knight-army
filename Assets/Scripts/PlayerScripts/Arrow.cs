@@ -59,8 +59,6 @@ public class Arrow : MonoBehaviour
         sr.sprite = buriedSprite;
 
         rb.linearVelocity = Vector2.zero;
-        //rb.isKinematic = true;
-        //Kinematic helyett bodyType
         rb.bodyType = RigidbodyType2D.Kinematic;
 
         transform.SetParent(target);

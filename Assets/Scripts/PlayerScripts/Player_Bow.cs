@@ -12,22 +12,21 @@ public class Player_Bow : MonoBehaviour
 
     public Animator anim;
 
-    // opcionális: ha szeretnéd, hogy az utolsó irány maradjon, ha nincs input
     private Vector2 lastAimDirection = Vector2.right;
 
-    private float timeSinceEnabled;           // a korábbi probléma miatt
+    private float timeSinceEnabled;
 
     void OnEnable()
     {
         anim.SetLayerWeight(0, 0);
         anim.SetLayerWeight(1, 1);
-        guard.canSwitchToGuard = false; // megakadályozzuk a guard váltást, amíg íj van felszerelve
+        guard.canSwitchToGuard = false;
         timeSinceEnabled = Time.time;
         StatsManager.Instance.shootTimer = StatsManager.Instance.shootCooldown;
     }
     void OnDisable()
     {
-        guard.canSwitchToGuard = true; // visszaengedjük a guard váltást, ha kikapcsoljuk az íjat
+        guard.canSwitchToGuard = true;
         anim.SetLayerWeight(0, 1);
         anim.SetLayerWeight(1, 0);
     }
@@ -38,7 +37,7 @@ public class Player_Bow : MonoBehaviour
 
         HandleAiming();
 
-        bool canShootNow = (Time.time - timeSinceEnabled > 0.18f); // kb. 3-4 frame grace period
+        bool canShootNow = (Time.time - timeSinceEnabled > 0.18f);
 
         if (canShootNow && Input.GetButtonDown("Shoot") && StatsManager.Instance.shootTimer <= 0)
         {
@@ -54,40 +53,29 @@ public class Player_Bow : MonoBehaviour
 
         Vector2 currentInput = new Vector2(horizontal, vertical);
 
-        // Ha van bemenet ? frissítjük az irányt
-        if (currentInput.sqrMagnitude > 0.01f)   // kis deadzone, hogy ne remegjen
+        if (currentInput.sqrMagnitude > 0.01f) 
         {
             aimDirection = currentInput.normalized;
-            lastAimDirection = aimDirection;      // mentjük az utolsó érvényes irányt
+            lastAimDirection = aimDirection;
         }
-        // Ha NINCS bemenet ? marad az utolsó ismert irány
         else
         {
             aimDirection = lastAimDirection;
         }
 
-        // Animator paraméterek frissítése (legtöbbször float-ok kellenek blend tree-hez)
         anim.SetFloat("aimX", aimDirection.x);
         anim.SetFloat("aimY", aimDirection.y);
-
-        // Opcionális: ha van "aimMagnitude" paramétered a blend tree-ben
-        // anim.SetFloat("aimMagnitude", aimDirection.magnitude);
-
-        // Extra tipp: ha 8 irányú snap-et szeretnél (csak derékszögek)
-        // aimDirection = SnapToEightDirections(aimDirection);
     }
 
-    // Opcionális segédfüggvény – ha pontosan 8 irányba akarod snap-elni a célzást
     private Vector2 SnapToEightDirections(Vector2 dir)
     {
         if (dir.sqrMagnitude < 0.01f) return dir;
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        angle = Mathf.Round(angle / 45f) * 45f;           // 45 fokos lépések
+        angle = Mathf.Round(angle / 45f) * 45f; 
         return new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
     }
 
-    // Ezt az animáció event hívja meg (animation event a shoot animáció végén)
     public void Shoot()
     {
         if (StatsManager.Instance.shootTimer > 0) return;
@@ -96,8 +84,8 @@ public class Player_Bow : MonoBehaviour
             .GetComponent<Arrow>();
 
         arrow.direction = aimDirection;
-        arrow.speed = 12f;           // vagy StatsManagerbõl vedd, ha van
-        arrow.ArrowDamage = StatsManager.Instance.ArrowDamage;  // ha szeretnéd egységesíteni
+        arrow.speed = 12f;
+        arrow.ArrowDamage = StatsManager.Instance.ArrowDamage;
 
         StatsManager.Instance.shootTimer = StatsManager.Instance.shootCooldown;
 
