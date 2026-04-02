@@ -15,7 +15,6 @@ public class Player_Heal : MonoBehaviour
         ResetHealStatus();
     }
 
-    // ÚJRAÉLEDÉS KEZELÉSE
     private void OnEnable()
     {
         ResetHealStatus();
@@ -25,7 +24,7 @@ public class Player_Heal : MonoBehaviour
     {
         isCooldownActive = false;
         canheal = true;
-        StopAllCoroutines(); // Megállítja a beragadt folyamatokat
+        StopAllCoroutines();
 
         if (healSlider != null)
         {
@@ -57,7 +56,6 @@ public class Player_Heal : MonoBehaviour
         canheal = false;
 
         float timer = 0;
-        // Itt a csúszka feltöltõdik, majd eltûnik
         while (timer < healCooldown)
         {
             timer += Time.deltaTime;
@@ -65,7 +63,6 @@ public class Player_Heal : MonoBehaviour
             yield return null;
         }
 
-        // Visszaállítás a végén
         if (healSlider != null) healSlider.value = 0;
         healSliderGroup.alpha = 0;
 

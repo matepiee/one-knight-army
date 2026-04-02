@@ -45,9 +45,6 @@ public class SkillManager : MonoBehaviour
             case "Bloodlust Magic":
                 StatsManager.Instance.UnlockRage();
                 break;
-
-
-
             default:
                 Debug.Log("Unknown skill: " + skillName);
                 break;

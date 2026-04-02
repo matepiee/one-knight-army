@@ -30,7 +30,6 @@ public class Player_Rage : MonoBehaviour
         ResetRageStatus();
     }
 
-    // ÚJRAÉLEDÉS KEZELÉSE
     private void OnEnable()
     {
         ResetRageStatus();
@@ -84,7 +83,7 @@ public class Player_Rage : MonoBehaviour
     private void StopInvincibility()
     {
         isInvincible = false;
-        durationLeft = 0; // Biztonság kedvéért
+        durationLeft = 0;
         if (durationGroup != null) durationGroup.alpha = 0;
         if (spriteRenderer != null) spriteRenderer.color = Color.white;
 
@@ -108,7 +107,6 @@ public class Player_Rage : MonoBehaviour
         isCooldownActive = false;
     }
 
-    // Biztonsági takarítás, ha kikapcsol az objektum
     private void OnDisable()
     {
         if (spriteRenderer != null) spriteRenderer.color = Color.white;

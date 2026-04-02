@@ -99,13 +99,6 @@ public class StatsManager : MonoBehaviour
         speed += amount;
     }
 
-
-    public void UpdateArrow(int dmg,float cd)
-    {
-        ArrowDamage+= dmg;
-        shootCooldown-= cd;
-    }
-
     public void UnlockGuard()
     {
         guard.enabled = true;
@@ -126,6 +119,12 @@ public class StatsManager : MonoBehaviour
         bow.enabled = true;
         arrowUpgrade.interactable = true;
         locked.alpha = 0;
+    }
+
+    public void UpdateArrow(int dmg,float cd)
+    {
+        ArrowDamage+= dmg;
+        shootCooldown-= cd;
     }
 
     public void UnlockRage()

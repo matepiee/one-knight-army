@@ -20,8 +20,8 @@ public class Enemy_Movement : MonoBehaviour
     public int baseDamage = 1;
 
     [Header("Separation (Soft Collision)")]
-    public float separationRadius = 1f; // Milyen távolságból kezdjék el tolni egymást
-    public float separationForce = 40f;   // Milyen erővel toljanak
+    public float separationRadius = 1f;
+    public float separationForce = 40f;   
     public LayerMask enemyLayer;
 
     [Header("References")]
@@ -46,7 +46,6 @@ public class Enemy_Movement : MonoBehaviour
     {
         if (enemyState == EnemyState.Knockback || isAttackingBase) return;
 
-        // Ha éppen rácsap valamire (Playerre), ne csináljon semmi mást
         if (enemyState == EnemyState.Attacking)
         {
             rb.linearVelocity = Vector2.zero;
@@ -80,7 +79,6 @@ public class Enemy_Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Ne tolja el a többi szörny, ha épp támad vagy fellökve van
         if (enemyState == EnemyState.Attacking || enemyState == EnemyState.Knockback || isAttackingBase) return;
 
         ApplySeparationForce();
@@ -116,6 +114,12 @@ public class Enemy_Movement : MonoBehaviour
         rb.linearVelocity = direction * speed;
     }
 
+    void Flip()
+    {
+        facingDirection *= -1;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
     void CheckBaseArrival()
     {
         if (Vector2.Distance(transform.position, baseTarget.position) <= baseReachDistance)
@@ -129,28 +133,23 @@ public class Enemy_Movement : MonoBehaviour
     {
         isAttackingBase = true;
 
-        // 1. Átváltunk támadó nézetre (megáll a figura, lejátssza az animációt)
         ChangeState(EnemyState.Attacking);
         rb.linearVelocity = Vector2.zero;
         
-        // 2. Várunk egy kicsit (pl. 0.5 vagy 1 másodperc), ami alatt "lecsap" a kardjával/kezével
         yield return new WaitForSeconds(0.6f); 
         
-        // 3. Sebzés bevitele
         Base_Health baseHealth = baseTarget.GetComponent<Base_Health>();
         if (baseHealth != null)
         {
             baseHealth.TakeDamage(baseDamage);
         }
 
-        // --- POR EFFEKT LÉTREHOZÁSA ELTŰNÉS ELŐTT ---
         Enemy_Health enemyHealth = GetComponent<Enemy_Health>();
         if (enemyHealth != null && enemyHealth.deathParticle != null)
         {
             Instantiate(enemyHealth.deathParticle, transform.position, Quaternion.identity);
         }
         
-        // 4. Eltűnik
         Destroy(gameObject);
     }
 
@@ -181,12 +180,6 @@ public class Enemy_Movement : MonoBehaviour
                 ChangeState(EnemyState.Idle);
             }
         }
-    }
-
-    void Flip()
-    {
-        facingDirection *= -1;
-        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
     public void ChangeState(EnemyState newState)
